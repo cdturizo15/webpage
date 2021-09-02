@@ -3,11 +3,14 @@ const app = express();
 const dgram = require('dgram');
 const socket = dgram.createSocket('udp4');
 const port = process.env.PORT || 3000
-var location = 'pripra'
+var lat = ''
+var lon = ''
+var date = ''
+var time = ''
 
 
 // settings
-app.listen(port);
+const server = app.listen(port);
 app.set('view engine','ejs')
 
 //static
@@ -17,21 +20,20 @@ app.use(express.static(__dirname + '/views'));
 function main (){
     //routes
     app.get('/',(req,res)=>{
-        res.render(__dirname+'/views/index.ejs',{title: location});
+        res.render(__dirname+'/views/index.ejs',{lat: lat,
+        lon: lon, date: date, time: time});
     });
     const server = app.listen(app.get('port'), () =>{
         console.log('Server on port', port);
         socket.on('message',(message)=>{
             console.log('message: '+ message)
-            location = message
-        });
-        socket.bind(9000)
-    setTimeout(update,5000)   
-    });
-}
-function update(){
-    app.get('/',(req,res)=>{
-        res.render(__dirname+'/views/index.ejs',{title: location});
+            data = message
+            lat = String(data).substr(17,10)
+            lon = String(data).substr(31,11)
+            date = String(data).substr(63,11)
+            time = String(data).substr(75,12)
+        }); 
+        socket.bind(9000)  
     });
 }
 
