@@ -2,11 +2,12 @@ const express = require('express')
 const app = express();
 const dgram = require('dgram');
 const socket = dgram.createSocket('udp4');
+const port = process.env.PORT || 3000
 var location = 'pripra'
 
 
 // settings
-app.set('port',3000);
+app.listen(port);
 app.set('view engine','ejs')
 
 //static
@@ -19,7 +20,7 @@ function main (){
         res.render(__dirname+'/views/index.ejs',{title: location});
     });
     const server = app.listen(app.get('port'), () =>{
-        console.log('Server on port', app.get('port'));
+        console.log('Server on port', port);
         socket.on('message',(message)=>{
             console.log('message: '+ message)
             location = message
