@@ -2,11 +2,8 @@ const express = require('express')
 const app = express();
 const dgram = require('dgram');
 const socket = dgram.createSocket('udp4');
-<<<<<<< HEAD
 const port = process.env.PORT || 80
-=======
-const port = process.env.PORT || 3000
->>>>>>> ea6328b1d094c12279b1da7666bb426b0e6eace5
+
 var lat = ''
 var lon = ''
 var date = ''
@@ -24,20 +21,23 @@ app.use(express.static(__dirname + '/views'));
 function main (){
     //routes
     app.get('/',(req,res)=>{
-<<<<<<< HEAD
+
         res.render(__dirname+'/views/index.html');
     });
 
-=======
+
         res.render(__dirname+'/views/index.ejs',{lat: lat,
         lon: lon, date: date, time: time});
     });
->>>>>>> ea6328b1d094c12279b1da7666bb426b0e6eace5
+
+        res.render(__dirname+'/views/index.ejs',{lat: lat,
+        lon: lon, date: date, time: time});
+    });
+
     const server = app.listen(app.get('port'), () =>{
         console.log('Server on port', port);
         socket.on('message',(message)=>{
             console.log('message: '+ message)
-<<<<<<< HEAD
             lat = String(message).substr(17,10)
             lon = String(message).substr(31,11)
             date = String(message).substr(63,11)
@@ -56,7 +56,7 @@ function main (){
             }
         );
     })
-=======
+
             data = message
             lat = String(data).substr(17,10)
             lon = String(data).substr(31,11)
@@ -65,7 +65,7 @@ function main (){
         }); 
         socket.bind(9000)  
     });
->>>>>>> ea6328b1d094c12279b1da7666bb426b0e6eace5
+
 }
 
 main();
