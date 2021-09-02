@@ -25,15 +25,6 @@ function main (){
         res.render(__dirname+'/views/index.html');
     });
 
-
-        res.render(__dirname+'/views/index.ejs',{lat: lat,
-        lon: lon, date: date, time: time});
-    });
-
-        res.render(__dirname+'/views/index.ejs',{lat: lat,
-        lon: lon, date: date, time: time});
-    });
-
     const server = app.listen(app.get('port'), () =>{
         console.log('Server on port', port);
         socket.on('message',(message)=>{
@@ -57,15 +48,5 @@ function main (){
         );
     })
 
-            data = message
-            lat = String(data).substr(17,10)
-            lon = String(data).substr(31,11)
-            date = String(data).substr(63,11)
-            time = String(data).substr(75,12)
-        }); 
-        socket.bind(9000)  
-    });
-
-}
-
+    }
 main();
