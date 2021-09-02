@@ -1,0 +1,53 @@
+body{
+    font-family: 'STIX Two Math', serif;
+    margin: 0%;
+    padding: 0%;
+    background-color: white;
+}
+
+.titulo{
+    width: 100%;
+    background-color: #f1666e;
+    display: flex;
+    height: 100px;
+}
+
+.titulo h1{
+    margin:auto;
+    text-align: center;
+    vertical-align: middle;
+    
+}
+
+.texto{
+   
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.texto h2{
+
+    margin: 2em;
+}
+
+.imagen{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+hr{
+
+    border: 2px solid black ;
+    margin: 0%;
+}
+
+.img{
+
+    width: 400px;
+    height: 300px;
+}
