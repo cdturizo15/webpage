@@ -9,11 +9,12 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
-    <script>src="main.js"</script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <title>Taxiflow</title>
 </head>
 
 <body>
+    
     <div class="titulo" >
       <h1>Taxi flow</h1>
     </div>
@@ -56,17 +57,9 @@
         </ul> 
 
     </div>
-    <script>
-        async function getGPS() {
-            response = await fetch("http://taxiflow.zapto.org/gps");
-            coordinates = await response.json();
-            document.getElementById("lat").textContent = coordinates.lat;
-            document.getElementById("lon").textContent = coordinates.lon;
-            document.getElementById("date").textContent = coordinates.date;
-            document.getElementById("time").textContent = coordinates.time;
-        }
-
-        setInterval(getGPS, 2000);
-    </script>
+    <div id="map-template"></div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="scripts/main.js"></script>
+    
 </body>
 </html>

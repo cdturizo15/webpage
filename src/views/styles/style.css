@@ -67,6 +67,14 @@ hr{
 }
 
 
+#map-template{
+    width: 40vw;
+    height: 40vh;
+    position: absolute;
+    background: gray;
+    left: 30%;
+}
+
 @media (max-width: 768px) {
     .texto{
         display: block;
