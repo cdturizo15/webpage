@@ -19,7 +19,7 @@ app.use(express.static(__dirname + '/views'));
 //listening the server
 
 //routes
-require('./routes/routes.js')
+app.use(require('./routes/routes'))
 app.get('/gps', (req, res)=>{
     res.json(
         {
