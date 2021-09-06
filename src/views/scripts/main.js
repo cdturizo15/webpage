@@ -13,6 +13,10 @@ async function getGPS() {
     if(marker){
         map.removeLayer(marker)
     }
+    if(coordinates.lat!=''){
+        map.setView([coordinates.lat,coordinates.lon],13)
+    }
+    
     marker = L.marker([coordinates.lat,coordinates.lon]).bindPopup('Myposition')
     map.addLayer(marker)
 }
