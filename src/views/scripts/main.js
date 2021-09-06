@@ -4,7 +4,7 @@ L.tileLayer(tileURL).addTo(map)
 let marker = null
 
 async function getGPS() {
-    response = await fetch("http://taxiflow.zapto.org/gps");
+    response = await fetch("http://dierickb.hopto.org/gps");
     coordinates = await response.json();
     document.getElementById("lat").textContent = coordinates.lat;
     document.getElementById("lon").textContent = coordinates.lon;

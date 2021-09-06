@@ -1,65 +1,95 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/style.css">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <title>Taxiflow</title>
 </head>
 
 <body>
-    
-    <div class="titulo" >
-      <h1>Taxi flow</h1>
-    </div>
-    <hr>
-     <div class="imagen">
-        <img alt="" class="img" importance="auto" loading="auto" src="https://i.pinimg.com/originals/d7/ae/01/d7ae0170d3d5ffcbaa7f02fdda387a3b.gif">
-     </div>
 
-    <div class="texto">
+    <header class="header">
+        <nav class="nav">
+            <a href="" class="logo nav-link">TaxiFlow</a>
+    </header>
+
+    <div class="body-content">
+        <div class="imagen">
+            <img alt="" class="img" importance="auto" loading="auto"
+                src="https://i.pinimg.com/originals/d7/ae/01/d7ae0170d3d5ffcbaa7f02fdda387a3b.gif" />
+        </div>
+
         <ul class="position">
             <li class="position-item">
                 <a class="position-item-data">
                     Longitud:
-                <small class="text-muted" id="lon"></small></a>
+                    <small class="text-muted" id="lon"></small>
+                </a>
             </li>
-        </ul> 
 
-        <ul class="position">
             <li class="position-item">
                 <a class="position-item-data">
-                    Latitud: 
-                <small class="text-muted" id="lat"></small></a>
+                    Latitud:
+                    <small class="text-muted" id="lat"></small>
+                </a>
             </li>
-        </ul> 
 
-        <ul class="position">
             <li class="position-item">
                 <a class="position-item-data">
                     Fecha:
-                <small class="text-muted" id="date"></small></a>
+                    <small class="text-muted" id="date"></small>
+                </a>
             </li>
-        </ul> 
 
-        <ul class="position">
             <li class="position-item">
                 <a class="position-item-data">
                     Hora:
-                <small class="text-muted" id="time"></small></a>
+                    <small class="text-muted" id="time"></small>
+                </a>
             </li>
-        </ul> 
+        </ul>
 
+        <container class="map">
+            <div id="map-template"></div>
+        </container>
     </div>
-    <div id="map-template"></div>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script src="scripts/main.js"></script>
-    
+
+    <footer class="footer">
+        <div class="continer">
+            <ul class="footer-email">
+                <li class="footer-item">
+                    Angelica Barranco Aragon -
+                    <small class="text-muted">mbarranco@uninorte.edu.co</small>
+                </li>
+                <li class="footer-item">
+                    Dierick Brochero Niebles -
+                    <small class="text-muted">dierickb@uninorte.edu.co</small>
+                </li>
+                <li class="footer-item">
+                    Cristian Martinez Turizo -
+                    <small class="text-muted">cdturizo@uninorte.edu.co</small>
+                </li>
+                <li class="footer-item">
+                    Nicolas Casas Parra -
+                    <small class="text-muted">ncasas@uninorte.edu.co</small>
+                </li>
+                <li class="footer-item">
+                    Bill Llach Bruges -
+                    <small class="text-muted">llachb@uninorte.edu.co</small>
+                </li>
+            </ul>
+        </div>
+    </footer>
 </body>
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="scripts/main.js"></script>
+
 </html>
