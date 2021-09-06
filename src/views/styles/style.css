@@ -68,11 +68,10 @@ body {
   font-size: 25px;
   padding: 10px;
 }
-.map {
+#map {
   align-items: center;
   text-align: center;
   position: inherit;
-  background: gray;
 }
 #map-template {
   width: 90%;
@@ -81,6 +80,7 @@ body {
   margin-top: 20px;
   margin-bottom: 20px;
   height: 50vh;
+  background: gray;
 }
 .footer {
   background-color: #f1666e;
