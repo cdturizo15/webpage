@@ -1,0 +1,39 @@
+.texto h2 {
+  margin: 2em;
+}
+.imagen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img {
+  width: 400px;
+  height: 300px;
+}
+.text-muted {
+  font-style: italic;
+}
+.position {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  display: flex;
+}
+.position-item {
+  text-decoration: none;
+  font-size: 25px;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .position {
+    display: block;
+    font-size: 30px;
+  }
+  .position-item-data {
+    text-align: center;
+    align-items: center;
+  }
+}
