@@ -1,6 +1,6 @@
 const tileURL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 const attribution = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
-marker = L.marker([-74.7720435, 10.9303097])
+marker = L.marker([-74.7720435, 10.9303097],13)
 const id = 'mapbox/streets-v11'
 var marker = null
 
