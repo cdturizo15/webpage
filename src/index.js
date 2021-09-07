@@ -38,8 +38,8 @@ app.listen(app.get('port'), () =>{
         console.log('message: '+ message)
         lat = String(message).substr(17,11)
         lon = String(message).substr(31,11)
-        date = String(message).substr(63,11)
-        time = String(message).substr(75,12)
+        date = String(message).substr(62,11)
+        time = String(message).substr(73,8)
     }); 
     socket.bind(9000)  
 });
