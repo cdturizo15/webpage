@@ -1,0 +1,143 @@
+* {
+  left: 0;
+  right: 0;
+  margin: 0;
+}
+body {
+  font-family: "STIX Two Math", serif;
+  justify-content: flex-end;
+  margin: 0%;
+  padding: 0%;
+  background-color: white;
+}
+.body-content {
+  padding-top: 50px;
+}
+.header {
+  background-color: #f1666e;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+
+  position: fixed;
+}
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+  padding: 0 20px;
+  line-height: 50px;
+}
+.nav {
+  left: 0;
+  right: 0;
+  padding: 0 40px;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+}
+.nav-link {
+  color: white;
+  text-decoration: none;
+}
+.nav-menu {
+  display: flex;
+  margin-right: 40px;
+  list-style: none;
+}
+.nav-menu-item {
+  font-size: 18px;
+  margin: 0 10px;
+  line-height: 50px;
+  text-transform: uppercase;
+  width: max-content;
+}
+.nav-menu-link {
+  padding: 8px 12px;
+  border-radius: 3px;
+}
+.nav-menu-link:hover,
+.nav-menu-link_active {
+  background-color: #d6ffb734;
+  transition: 0.5s;
+}
+.footer {
+  background-color: #f1666e;
+  position: initial;
+  text-align: center;
+  align-items: center;
+  height: 200px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.footer-email {
+  display: inline;
+  text-align: center;
+  align-items: center;
+  list-style: none;
+  line-height: 30px;
+  vertical-align: middle;
+}
+.footer-item-email {
+  text-align: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  color: #2a1e5c;
+}
+.nav-toggle {
+  color: white;
+  background: none;
+  border: none;
+  font-size: 30px;
+  padding: 0 20px;
+  line-height: 50px;
+  cursor: pointer;
+  display: none;
+  z-index:5000 ;
+}
+@media (max-width: 768px) {
+  .logo {
+    font-size: 25px;
+    padding: 0 20px;
+    line-height: 50px;
+  }
+  .nav-menu {
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    background-color: #cebbc9;
+    position: fixed;
+    top: 50px;
+    width: 100%;
+    padding: 20px 0;
+
+    height: calc(100% - 50px);
+    overflow-y: auto;
+
+    left: 100%;
+    transition: left 0.3s;
+  }
+  .nav-menu-link:hover,
+  .nav-menu-link_active {
+    background: none;
+    color: #261447;
+  }
+  .nav-menu-link {
+    color: #4056f4;
+  }
+  .nav-toggle {
+    display: block;
+  }
+  .nav-menu_visible {
+    left: 0;
+  }
+  .nav-toggle:focus:not(:focus-visible) {
+    outline: none;
+  }
+  .nav-toggle:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
