@@ -1,7 +1,10 @@
-const map = L.map('map-template').setView([10.96854,-74.78132],13)
+const map = L.map('map-template').setView([10.96854, -74.78132], 13)
 const tileURL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 L.tileLayer(tileURL).addTo(map)
 let marker = null
+
+var zoomButton = document.querySelector('.zoom-to-data-buttom');
+const sw = 0;
 
 async function getGPS() {
     response = await fetch("http://dierickb.hopto.org/gps");
@@ -14,13 +17,16 @@ async function getGPS() {
     if (marker) {
         map.removeLayer(marker)
     }
-    if (coordinates.lat != '') {
-        map.setView([coordinates.lat,coordinates.lon],13)
-        marker = L.marker([coordinates.lat, coordinates.lon],15).addTo(map).bindPopup("s")
+    if ((coordinates.lat != '')) {
+        marker = L.marker([coordinates.lat, coordinates.lon]).addTo(map).bindPopup("s")
         map.addLayer(marker)
+
     }
     L.marker([coordinates.lat, coordinates.lon])
 }
 
-setInterval(getGPS, 2000);
+zoomButton.addEventListener('click', function () {
+    map.setView([coordinates.lat, coordinates.lon], 15)
+});
 
+setInterval(getGPS, 2500);

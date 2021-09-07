@@ -96,6 +96,7 @@ body {
   line-height: 50px;
   cursor: pointer;
   display: none;
+  z-index:5000 ;
 }
 @media (max-width: 768px) {
   .logo {
