@@ -61,21 +61,6 @@ body {
   background-color: #d6ffb734;
   transition: 0.5s;
 }
-
-#map {
-  align-items: center;
-  text-align: center;
-  position: inherit;
-}
-#map-template {
-  width: 90%;
-  align-items: center;
-  margin: auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  height: 50vh;
-  background: gray;
-}
 .footer {
   background-color: #f1666e;
   position: initial;

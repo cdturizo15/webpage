@@ -6,6 +6,20 @@
   align-items: center;
   justify-content: center;
 }
+#map {
+  align-items: center;
+  text-align: center;
+  display:initial;
+}
+#map-template {
+  width: 90%;
+  align-items: center;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 50vh;
+  background: gray;
+}
 .img {
   width: 400px;
   height: 300px;
