@@ -8,16 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap" rel="stylesheet" />
 
 
     <link rel="stylesheet" href="styles/style.css" />
-    <link rel="stylesheet" href="styles/indexStyle.css" />
-
-
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossorigin="" />
+    <link rel="stylesheet" href="styles/aboutStyle.css" />
 
     <script defer src="https://kit.fontawesome.com/47abef14b3.js" crossorigin="anonymous"></script>
 
@@ -28,63 +22,26 @@
 
     <header class="header">
         <nav class="nav">
-            <a href="" class="logo nav-link">TaxiFlow</a>
+            <a href="../views/index.html" class="logo nav-link">TaxiFlow</a>
             <button class="nav-toggle" aria-label="Abrir menú">
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-menu">
                 <li class="nav-menu-item nav-link">
-                    <a href="#" class="nav-menu-link nav-link">Home</a>
+                    <a href="../views/index.html" class="nav-menu-link nav-link">Home</a>
                 </li>
                 <li class="nav-menu-item nav-link">
                     <a href="#" class="nav-menu-link nav-link">Help</a>
                 </li>
                 <li class="nav-menu-item nav-link">
-                    <a href="#" class="nav-menu-link nav-link nav-menu-link_active">About Us</a>
+                    <a href="./aboutUS.html" class="nav-menu-link nav-menu-link_active">About Us</a>
                 </li>
             </ul>
         </nav>
     </header>
 
     <div class="body-content">
-        <div class="imagen">
-            <img alt="" class="img" importance="auto" loading="auto"
-                src="https://i.pinimg.com/originals/d7/ae/01/d7ae0170d3d5ffcbaa7f02fdda387a3b.gif" />
-        </div>
-
-        <ul class="position">
-            <li class="position-item">
-                <a class="position-item-data">
-                    Longitud:
-                    <small class="text-muted" id="lon"></small>
-                </a>
-            </li>
-
-            <li class="position-item">
-                <a class="position-item-data">
-                    Latitud:
-                    <small class="text-muted" id="lat"></small>
-                </a>
-            </li>
-
-            <li class="position-item">
-                <a class="position-item-data">
-                    Fecha:
-                    <small class="text-muted" id="date"></small>
-                </a>
-            </li>
-
-            <li class="position-item">
-                <a class="position-item-data">
-                    Hora:
-                    <small class="text-muted" id="time"></small>
-                </a>
-            </li>
-        </ul>
-
-        <div id="map">
-            <div id="map-template"></div>
-        </div>
+        jvv,v,v
     </div>
 
     <footer class="footer">
@@ -114,13 +71,5 @@
         </div>
     </footer>
 
-
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossorigin=""></script>
-    <script src="scripts/main.js"></script>
-    <script src="./scripts/jsNavBar.js"></script>
-
 </body>
-
 </html>
