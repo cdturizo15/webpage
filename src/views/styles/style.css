@@ -10,6 +10,14 @@ body {
   padding: 0%;
   background-color: white;
 }
+.img-logo{
+  width: 40px;
+  vertical-align: middle;
+}
+.fas{
+  margin-left:10px;
+  margin-right:10px;
+}
 .body-content {
   padding-top: 50px;
 }
