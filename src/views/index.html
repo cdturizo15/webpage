@@ -8,39 +8,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap" rel="stylesheet" />
+    <title>Taxiflow</title>
+    <link rel="icon" href="./images/taxi.ico">
 
 
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/indexStyle.css" />
 
-
+    <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin="" />
-
     <script defer src="https://kit.fontawesome.com/47abef14b3.js" crossorigin="anonymous"></script>
 
-    <title>Taxiflow</title>
+
 </head>
 
 <body>
 
     <header class="header">
         <nav class="nav">
-            <a href="/" class="logo nav-link">TaxiFlow</a>
+            <a href="/" class="logo nav-link">
+                <img alt="" class="fas img-logo" importance="auto" loading="auto" src="./images/taxi.ico" />
+
+                Taxiflow</a>
             <button class="nav-toggle" aria-label="Abrir menú">
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-menu">
                 <li class="nav-menu-item nav-link">
-                    <a href="/" class="nav-menu-link nav-link">Home</a>
+                    <a href="/" class="nav-menu-link nav-link">
+                        <i class="fas fa-home"></i>Home</a>
                 </li>
-                <li class="nav-menu-item nav-link">
+                <!--
+                    <li class="nav-menu-item nav-link">
                     <a href="#" class="nav-menu-link nav-link">Help</a>
-                </li>
+                    </li>
+                -->
                 <li class="nav-menu-item nav-link">
-                    <a href="/aboutUS" class="nav-menu-link nav-link nav-menu-link_active">About Us</a>
+                    <a href="/aboutUS" class="nav-menu-link nav-link nav-menu-link_active"><i
+                            class="fas fa-info"></i>About Us</a>
                 </li>
             </ul>
         </nav>
@@ -90,11 +97,11 @@
                     <i class="fas fa-crosshairs"></i>
                 </button>
                 -->
-                
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-            </label>
+
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
             </div>
         </div>
 
