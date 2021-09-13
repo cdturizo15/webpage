@@ -3,10 +3,10 @@ const app = express();
 const mysql = require('mysql');
 const port = process.env.PORT || 80
 const pool = mysql.createPool({
-    host: 'taxiflow@taxiflowdatabase.c0u6vxuknyg3.us-west-2.rds.amazonaws.com:3306', // HOST NAME
-    user: 'taxiflow', // USER NAME
-    database: 'taxiflow', // DATABASE NAME
-    password: 'David5597' // DATABASE PASSWORD
+    host: 'aqui va tu host', // HOST NAME
+    user: 'aqui va tu usuario', // USER NAME
+    database: 'aqui va nombre de base de datos', // DATABASE NAME
+    password: 'aqui va contrasena del usuario' // DATABASE PASSWORD
 });
 
 // settings
