@@ -1,34 +1,28 @@
 const express = require('express')
 const app = express();
 const mysql = require('mysql');
+const {promisify} = require('util')
 const port = process.env.PORT || 80
-const pool = mysql.createPool({
-    host: 'aqui va tu host', // HOST NAME
-    user: 'aqui va tu usuario', // USER NAME
-    database: 'aqui va nombre de base de datos', // DATABASE NAME
-    password: 'aqui va contrasena del usuario' // DATABASE PASSWORD
+const connection = mysql.createConnection({
+    host: 'host aqui', // HOST NAME
+    user: 'user aqui', // USER NAME
+    database: 'database aqui', // DATABASE NAME
+    password: 'password aqui' // DATABASE PASSWORD
 });
+var lat = '';
+var lon = '';
+var date = '';
+var time = '';
+
 
 // settings
 app.listen(port);
-const {promisify} = require('util');
-
-pool.getConnection((err, connection)=>{
-    if(err){
-        if(err.code === 'PROTOCOL_CONNECTION_LOST'){
-            console.error('DATABASE CONNECTION WAS CLOSED');
-        }
-        if(err.code === 'ER_CON_COUNT_ERROR'){
-            console.error('DATABASE HAS TOO MANY CONNECTIONS');
-        }
-        if(err.code === 'ECONNREFUSED'){
-            console.error('DATABASE CONNECTION WAS REFUSED');
-        }
-    }
-    if(connection) connection.release();
-    console.log('DB is connected');
-    return;
+promisify(connection.query);
+connection.connect(err=>{
+    if(err) throw err
+    console.log('DB connected')
 })
+
 
 //static
 app.use(express.static(__dirname + '/views'));
@@ -37,6 +31,27 @@ app.use(express.static(__dirname + '/views'));
 
 //routes
 app.use(require('./routes/routes'))
+
+app.get('/gps', async(req, res)=>{
+    await connection.query('SELECT * FROM gps',(err,rows)=>{
+        if(err) throw err
+        location = rows[0]
+        lat = location.Lat
+        lon = location.Lon
+        date = location.Fecha
+        time = location.Hora
+    })  
+    res.json(
+        {
+            lat: lat,
+            lon: lon,
+            date: date,
+            time: time
+        }
+    );
+})
+
+
 // Port listening
 app.listen(app.get('port'), () =>{
     console.log('Server on port', port);     
