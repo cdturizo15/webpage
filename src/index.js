@@ -2,12 +2,12 @@ const express = require('express')
 const app = express();
 const mysql = require('mysql');
 const {promisify} = require('util')
-const port = process.env.PORT || 80
+const port = process.env.PORT || 8080
 const connection = mysql.createConnection({
-    host: 'host aqui', // HOST NAME
-    user: 'user aqui', // USER NAME
-    database: 'database aqui', // DATABASE NAME
-    password: 'password aqui' // DATABASE PASSWORD
+    host: '.us-west-2.rds.amazonaws.com', // HOST NAME
+    user: 'user', // USER NAME
+    database: 'database', // DATABASE NAME
+    password: 'pass' // DATABASE PASSWORD
 });
 var lat = '';
 var lon = '';
@@ -33,7 +33,7 @@ app.use(express.static(__dirname + '/views'));
 app.use(require('./routes/routes'))
 
 app.get('/gps', async(req, res)=>{
-    await connection.query('SELECT * FROM gps',(err,rows)=>{
+    await connection.query('SELECT * FROM gps ORDER BY idGPS DESC',(err,rows)=>{
         if(err) throw err
         location = rows[0]
         lat = location.Lat
