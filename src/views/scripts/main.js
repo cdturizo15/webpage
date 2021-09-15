@@ -7,7 +7,7 @@ var checkbox = document.querySelector('input[type="checkbox"]');
 
 
 async function getGPS() {
-  response = await fetch(process.env.FETCH);
+  response = await fetch('http://taxiflow.ddns.net/gps');
   coordinates = await response.json();
   document.getElementById("lat").textContent = coordinates.lat;
   document.getElementById("lon").textContent = coordinates.lon;
