@@ -7,7 +7,7 @@ var checkbox = document.querySelector('input[type="checkbox"]');
 
 
 async function getGPS() {
-  response = await fetch("http://angelica.hopto.org/gps");
+  response = await fetch(process.env.FETCH);
   coordinates = await response.json();
   document.getElementById("lat").textContent = coordinates.lat;
   document.getElementById("lon").textContent = coordinates.lon;
