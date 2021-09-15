@@ -1,9 +1,9 @@
 const mysql = require('mysql');
 const pool = mysql.createConnection({
-    host: 'database-taxiflow.caufp5btongz.us-west-2.rds.amazonaws.com', // HOST NAME
-    user: 'taxiflow', // USER NAME
+    host: '', // HOST NAME
+    user: '', // USER NAME
     database: 'taxiflow', // DATABASE NAME
-    password: 'taxiflow' // DATABASE PASSWORD
+    password: '' // DATABASE PASSWORD
 });
 
 pool.connect(err=>{
