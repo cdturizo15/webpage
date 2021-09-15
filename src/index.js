@@ -4,11 +4,11 @@ const mysql = require('mysql');
 const {promisify} = require('util')
 const port = process.env.PORT
 const connection = mysql.createConnection({
-    host:'',
+    host: process.env.HOST,
     port: 3306,
-    user: '', 
+    user: process.env.USER, 
     database: 'taxiflow', 
-    password: ''
+    password: process.env.PASS
 });
 var lat = '';
 var lon = '';
