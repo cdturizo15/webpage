@@ -2,12 +2,13 @@ const express = require('express')
 const app = express();
 const mysql = require('mysql');
 const {promisify} = require('util')
-const port = process.env.PORT || 80
+const port = process.env.PORT
 const connection = mysql.createConnection({
-    host: 'host aqui', // HOST NAME
-    user: 'user aqui', // USER NAME
-    database: 'database aqui', // DATABASE NAME
-    password: 'password aqui' // DATABASE PASSWORD
+    host:'',
+    port: 3306,
+    user: '', 
+    database: 'taxiflow', 
+    password: ''
 });
 var lat = '';
 var lon = '';
@@ -33,14 +34,18 @@ app.use(express.static(__dirname + '/views'));
 app.use(require('./routes/routes'))
 
 app.get('/gps', async(req, res)=>{
-    await connection.query('SELECT * FROM gps',(err,rows)=>{
-        if(err) throw err
-        location = rows[0]
-        lat = location.Lat
-        lon = location.Lon
-        date = location.Fecha
-        time = location.Hora
-    })  
+    await connection.query(`SELECT * FROM taxiflow.location ORDER BY idlocation DESC`, function(error, rows){
+        if(error){
+            throw error;
+        }else{
+                location = rows[0]
+                lat = location.latitude;
+                lon = location.longitude;
+                date = location.date;
+                time = location.time;
+        };
+        
+    });
     res.json(
         {
             lat: lat,
@@ -51,10 +56,7 @@ app.get('/gps', async(req, res)=>{
     );
 })
 
-
 // Port listening
 app.listen(app.get('port'), () =>{
     console.log('Server on port', port);     
 });
-
-
