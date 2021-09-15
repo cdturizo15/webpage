@@ -5,11 +5,11 @@ const socket = dgram.createSocket('udp4');
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
-    host:'',
+    host: process.env.HOST,
     port: 3306,
-    user: '', 
+    user: process.env.USER, 
     database: 'taxiflow', 
-    password: ''
+    password: process.env.PASS
 });
 
 connection.connect(function(error){
