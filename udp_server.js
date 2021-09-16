@@ -31,7 +31,7 @@ socket.on('message',(message)=>{
     const lon = String(message).substr(31,11);
     const date = String(message).substr(62,11);
     const time = String(message).substr(73,9);
-    const license_plate = String(message).substr(104,7);
+    const license_plate = String(message).substr(103,7);
     console.log(lon);
     console.log(date);
     console.log(time);
