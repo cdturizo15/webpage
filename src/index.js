@@ -2,12 +2,13 @@ const express = require('express')
 const app = express();
 const mysql = require('mysql');
 const {promisify} = require('util')
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 80
 const connection = mysql.createConnection({
-    host: '.us-west-2.rds.amazonaws.com', // HOST NAME
-    user: 'user', // USER NAME
-    database: 'database', // DATABASE NAME
-    password: 'pass' // DATABASE PASSWORD
+host:'database-taxiflow.caufp5btongz.us-west-2.rds.amazonaws.com',
+    port: 3306,
+    user: 'taxiflow', 
+    database: 'taxiflow', 
+    password: 'taxiflow'
 });
 var lat = '';
 var lon = '';
@@ -33,14 +34,19 @@ app.use(express.static(__dirname + '/views'));
 app.use(require('./routes/routes'))
 
 app.get('/gps', async(req, res)=>{
-    await connection.query('SELECT * FROM gps ORDER BY idGPS DESC',(err,rows)=>{
-        if(err) throw err
-        location = rows[0]
-        lat = location.Lat
-        lon = location.Lon
-        date = location.Fecha
-        time = location.Hora
-    })  
+    await connection.query(`SELECT * FROM taxiflow.location ORDER BY idlocation DESC`, function(error, rows){
+        if(error){
+            throw error;
+        }else{
+                location = rows[0]
+                console.log(location) 
+                lat = location.latitude;
+                lon = location.longitude;
+                date = location.date;
+                time = location.time;
+        };
+        
+    });
     res.json(
         {
             lat: lat,
