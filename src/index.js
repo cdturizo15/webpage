@@ -2,13 +2,14 @@ const express = require('express')
 const app = express();
 const mysql = require('mysql');
 const {promisify} = require('util')
-const port = process.env.PORT || 80
+const port = process.env.PORT
 const connection = mysql.createConnection({
-host:'database-taxiflow.caufp5btongz.us-west-2.rds.amazonaws.com',
+    host: process.env.HOST,
     port: 3306,
-    user: 'taxiflow', 
+    user: process.env.USER, 
     database: 'taxiflow', 
-    password: 'taxiflow'
+    password: process.env.PASS
+
 });
 var lat = '';
 var lon = '';
@@ -39,7 +40,10 @@ app.get('/gps', async(req, res)=>{
             throw error;
         }else{
                 location = rows[0]
+<<<<<<< HEAD
                 console.log(location) 
+=======
+>>>>>>> c863451ddad4271897a97f3934ae83c7298d701b
                 lat = location.latitude;
                 lon = location.longitude;
                 date = location.date;
@@ -57,10 +61,7 @@ app.get('/gps', async(req, res)=>{
     );
 })
 
-
 // Port listening
 app.listen(app.get('port'), () =>{
     console.log('Server on port', port);     
 });
-
-
