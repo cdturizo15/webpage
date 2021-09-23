@@ -3,7 +3,7 @@ const app = express();
 const mysql = require('mysql');
 const child_p = require('child_process')
 const {promisify} = require('util')
-const port = 80
+const port = 3000
 const connection = mysql.createConnection({
     host: process.env.HOST, // HOST NAME
     user: process.env.USER, // USER NAME
