@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express();
 const mysql = require('mysql');
+const child_p = require('child_process')
 const {promisify} = require('util')
 const port = 8080
 const connection = mysql.createConnection({
@@ -31,6 +32,10 @@ app.use(express.static(__dirname + '/views'));
 
 //routes
 app.use(require('./routes/routes'))
+
+app.post('/webhook', async(req,res)=>{
+    child_p.exec('git pull origin master')
+})
 
 app.get('/gps', async(req, res)=>{
     await connection.query(`SELECT * FROM taxiflow.location ORDER BY idlocation DESC`, function(error, rows){
