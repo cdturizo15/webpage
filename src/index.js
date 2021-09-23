@@ -2,14 +2,12 @@ const express = require('express')
 const app = express();
 const mysql = require('mysql');
 const {promisify} = require('util')
-const port = 8080
+const port = 80
 const connection = mysql.createConnection({
-    host: process.env.HOST,
-    port: 3306,
-    user: process.env.USER, 
-    database: 'taxiflow', 
-    password: process.env.PASS
-
+    host: 'taxiflowdatabase.c0u6vxuknyg3.us-west-2.rds.amazonaws.com', // HOST NAME
+    user: 'taxiflow', // USER NAME
+    database: 'taxiflow', // DATABASE NAME
+    password: 'David5597' // DATABASE PASSWORD
 });
 var lat = '';
 var lon = '';
