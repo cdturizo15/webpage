@@ -31,7 +31,7 @@ async function getGPS() {
       sw = 0
     }
   });
-  if ((coordinates.lat != '' && (sw == 0))) {1
+  if ((coordinates.lat != '' && (sw != 0))) {1
     map.setView([coordinates.lat, coordinates.lon], 17)
   }
   marker = L.marker([coordinates.lat, coordinates.lon]).bindPopup('Myposition')
