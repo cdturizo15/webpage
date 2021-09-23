@@ -35,14 +35,14 @@ async function getGPS() {
     map.setView([coordinates.lat, coordinates.lon], 17)
   }
   marker = L.marker([coordinates.lat, coordinates.lon]).bindPopup('Myposition')
-  latlngs.push([coordinates.lat,coordinates.lon])
-  polyline = L.polyline(latlngs, {color: 'red',smoothFactor:0.5})
   if(coordinates.lat != 0){
-    map.addLayer(polyline)
-  }
+    latlngs.push([coordinates.lat,coordinates.lon])
 
-  map.addLayer(marker)
+  }  
   console.log(latlngs)
+  polyline = L.polyline(latlngs, {color: 'red',smoothFactor:0.5})
+  map.addLayer(polyline)
+  map.addLayer(marker)
 }
 
 setInterval(getGPS, 2000);
