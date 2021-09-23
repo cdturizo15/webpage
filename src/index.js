@@ -4,10 +4,10 @@ const mysql = require('mysql');
 const {promisify} = require('util')
 const port = 80
 const connection = mysql.createConnection({
-    host: 'taxiflowdatabase.c0u6vxuknyg3.us-west-2.rds.amazonaws.com', // HOST NAME
-    user: 'taxiflow', // USER NAME
+    host: process.env.HOST, // HOST NAME
+    user: process.env.USER, // USER NAME
     database: 'taxiflow', // DATABASE NAME
-    password: 'David5597' // DATABASE PASSWORD
+    password: process.env.PASS // DATABASE PASSWORD
 });
 var lat = '';
 var lon = '';
