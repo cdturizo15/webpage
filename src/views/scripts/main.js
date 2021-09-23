@@ -4,7 +4,7 @@ var fetchurl = location.hostname;
 L.tileLayer(tileURL).addTo(map)
 let marker = null
 var sw = 0
-var checkbox = document.querySelector('input[type="checkbox"]');
+var button = document.getElementById('zoom');
 var latlngs = [];
 var polyline = null
 
@@ -22,18 +22,9 @@ async function getGPS() {
   if(polyline){
     map.removeLayer(polyline)
   }
-  checkbox.addEventListener('change', function () {
-    if (checkbox.checked) {
-      // do this
-      sw = 1
-    } else {
-      // do that
-      sw = 0
-    }
-  });
-  if ((coordinates.lat != '' && (sw == 0))) {1
+  button.addEventListener('click', function () {
     map.setView([coordinates.lat, coordinates.lon], 17)
-  }
+  });
   marker = L.marker([coordinates.lat, coordinates.lon]).bindPopup('Myposition')
   if(coordinates.lat != ""){
     latlngs.push([coordinates.lat,coordinates.lon])
