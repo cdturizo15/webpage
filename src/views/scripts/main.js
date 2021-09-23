@@ -39,7 +39,6 @@ async function getGPS() {
     latlngs.push([coordinates.lat,coordinates.lon])
 
   }  
-  console.log(latlngs)
   polyline = L.polyline(latlngs, {color: 'red',smoothFactor:0.5})
   map.addLayer(polyline)
   map.addLayer(marker)
