@@ -2,7 +2,7 @@ const express = require('express')
 const app = express();
 const mysql = require('mysql');
 const {promisify} = require('util')
-const port = 80
+const port = 8080
 const connection = mysql.createConnection({
     host: process.env.HOST, // HOST NAME
     user: process.env.USER, // USER NAME
