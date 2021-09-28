@@ -6,11 +6,10 @@ const mysql = require('mysql');
 require('dotenv').config()
 
 const connection = mysql.createConnection({
-    host: process.env.HOST,
-    port: 3306,
-    user: process.env.USER,
-    database: 'taxiflow', 
-    password: process.env.PASS
+    host: process.env.HOST, // HOST NAME
+    user: process.env.USER, // USER NAME
+    database: 'taxiflow', // DATABASE NAME
+    password: process.env.PASS // DATABASE PASSWORD
 });
 
 connection.connect(function(error){
@@ -28,12 +27,12 @@ socket.on('listening', () => {
 
 socket.on('message',(message)=>{
     console.log('message: '+ message);
-    const lat = String(message).substr(18,8);
+    const lat = String(message).substr(17,8);
     const lon = String(message).substr(31,8);
     const date = String(message).substr(63,11);
     const time = String(message).substr(74,9);
     const timestamp = String(message).substr(63,19);
-    const license_plate = String(message).substr(104,7);
+    const license_plate = String(message).substr(103,7);
     console.log(lat);
     console.log(lon);
     console.log(date);
