@@ -7,5 +7,8 @@ router.get('/aboutUS',(req,res)=>{
     res.sendFile(__dirname+'/aboutUS.html');
 });
  
+router.get('/historial',(req,res)=>{
+    res.sendFile(__dirname+'/historial.html');
+});
 
 module.exports = router;

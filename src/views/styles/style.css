@@ -27,7 +27,6 @@ body {
   left: 0;
   right: 0;
   height: 50px;
-
   position: fixed;
 }
 .logo {
@@ -63,12 +62,14 @@ body {
 .nav-menu-link {
   padding: 8px 12px;
   border-radius: 3px;
+  border: solid white;
+
 }
-.nav-menu-link:hover,
-.nav-menu-link_active {
-  background-color: #d6ffb734;
-  transition: 0.5s;
+.nav-menu-link:hover{
+background-color: white;
+color: #f1666e;
 }
+
 .footer {
   background-color: #f1666e;
   position: initial;
@@ -210,3 +211,5 @@ input:checked + .slider:before {
     outline: none;
   }
 }
+
+ 
