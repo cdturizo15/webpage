@@ -5,11 +5,10 @@ const child_p = require('child_process')
 const {promisify} = require('util')
 const port = 8080
 const connection = mysql.createConnection({
-    host: process.env.HOST,
-    port: 3306,
-    user: process.env.USER,
-    database: 'taxiflow', 
-    password: process.env.PASS
+    host: process.env.HOST, // HOST NAME
+    user: process.env.USER, // USER NAME
+    database: 'taxiflow', // DATABASE NAME
+    password: process.env.PASS // DATABASE PASSWORD
 });
 var lat = '';
 var lon = '';
