@@ -8,20 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <title>Taxiflow</title>
-    <link rel="icon" href="./images/taxi.ico">
 
 
     <link rel="stylesheet" href="styles/style.css" />
-    <link rel="stylesheet" href="styles/indexStyle.css" />
+    <link rel="stylesheet" href="styles/style_h.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossorigin="" />
     <script defer src="https://kit.fontawesome.com/47abef14b3.js" crossorigin="anonymous"></script>
 
-
+    <title>Taxiflow</title>
+    <link rel="icon" href="./images/taxi.ico">
 </head>
 
 <body>
@@ -46,58 +41,40 @@
                     </li>
                 -->
                 <li class="nav-menu-item nav-link">
-                    <a href="/historial" class="nav-menu-link nav-link "><i class="fas fa-history"></i> Historial</a>
+                    <a href="/historial" class="nav-menu-link nav-link nav-menu-link_active"><i class="fas fa-history"></i> Historial</a>
                 </li>
             </ul>
         </nav>
     </header>
 
     <div class="body-content">
-        <div class="imagen">
-            <img alt="" class="img" importance="auto" loading="auto"
-                src="https://i.pinimg.com/originals/d7/ae/01/d7ae0170d3d5ffcbaa7f02fdda387a3b.gif" />
+        
+
+        <div class="fecha-div">
+           <form class="fecha">
+               <h3>Mes y hora de inicio:</h3>
+               <input class="fecha-a" data-mes="formulario del mes" id="date-1" for="date-1" type="date">
+               <input class="fecha-a" data-horai="Hora de inicio" id="date-2" type="time">
+      
+               <h3>Mes y hora final:</h3>
+               <input class="fecha-a" data-horaf="Hora final" id="date-3" type="date">
+               <input class="fecha-a"  id="date-4"  type="time">
+               <input id="boton" type="button" value="Trazar trayectoria">
+           </form>
         </div>
-
-        <ul class="position">
-            <li class="position-item">
-                <a class="position-item-data">
-                    Longitud:
-                    <small class="text-muted" id="lon"></small>
-                </a>
-            </li>
-
-            <li class="position-item">
-                <a class="position-item-data">
-                    Latitud:
-                    <small class="text-muted" id="lat"></small>
-                </a>
-            </li>
-
-            <li class="position-item">
-                <a class="position-item-data">
-                    Fecha:
-                    <small class="text-muted" id="date"></small>
-                </a>
-            </li>
-
-            <li class="position-item">
-                <a class="position-item-data">
-                    Hora:
-                    <small class="text-muted" id="time"></small>
-                </a>
-            </li>
-        </ul>
-
-
-        <div id="map-template">
-            <div class="button-overlay">
-                    <button id='zoom'class="zoom-to-data-buttom" type="submit">
-                    <i class="fas fa-crosshairs"></i>
-                </button>
-                
-            </div>
-        </div>
-
+        
+        <div class="mapa"> 
+         <!-- Aqui va el mapa -->    
+         </div>
+      <script>
+      const mes= document.getElementById("date-1")
+      const hora1=document.getElementById("date-2")
+      const horaf=document.getElementById("date-3")
+      
+      console.log(mes.dataset.mes)
+      console.log(hora1.dataset.horai)
+      console.log(horaf.dataset.horaf)
+      </script>
     </div>
 
     <footer class="footer">
@@ -126,7 +103,6 @@
             </ul>
         </div>
     </footer>
-
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
