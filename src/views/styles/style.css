@@ -34,6 +34,8 @@ body {
   font-weight: bold;
   padding: 0 20px;
   line-height: 50px;
+  color: white;
+  text-decoration: none;
 }
 .nav {
   left: 0;
@@ -58,12 +60,14 @@ body {
   line-height: 50px;
   text-transform: uppercase;
   width: max-content;
+  color: white;
+  text-decoration: none;
 }
 .nav-menu-link {
   padding: 8px 12px;
   border-radius: 3px;
-  border: solid white;
-
+  color: white;
+  text-decoration: none;
 }
 .nav-menu-link:hover{
 background-color: white;
