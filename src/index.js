@@ -4,7 +4,7 @@ const mysql = require('mysql');
 const child_p = require('child_process')
 const {promisify} = require('util');
 require('dotenv').config()
-const port = 80
+const port = 8080
 const connection = mysql.createConnection({
     host: process.env.HOST, // HOST NAME
     user: process.env.USER, // USER NAME
