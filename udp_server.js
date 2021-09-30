@@ -30,7 +30,7 @@ socket.on('message',(message)=>{
     const lat = String(message).substr(0,7);
     const lon = String(message).substr(10,8);
     const date = String(message).substr(21,10);
-    const time = String(message).substr(28,10);
+    const time = String(message).substr(31,10);
     const timestamp = String(message).substr(21,18);
     const license_plate = String(message).substr(44,8);
     console.log(lat);
