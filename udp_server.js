@@ -28,11 +28,11 @@ socket.on('listening', () => {
 socket.on('message',(message)=>{
     console.log('message: '+ message);
     const lat = String(message).substr(0,7);
-    const lon = String(message).substr(10,9);
-    const date = String(message).substr(22,11);
-    const time = String(message).substr(31,9);
-    const timestamp = String(message).substr(22,19);
-    const license_plate = String(message).substr(45,8);
+    const lon = String(message).substr(10,8);
+    const date = String(message).substr(21,10);
+    const time = String(message).substr(30,9);
+    const timestamp = String(message).substr(22,18);
+    const license_plate = String(message).substr(44,8);
     console.log(lat);
     console.log(lon);
     console.log(date);
