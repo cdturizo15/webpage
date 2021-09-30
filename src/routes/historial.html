@@ -9,8 +9,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="styles/style.css" />
+<<<<<<< HEAD
     <link rel="stylesheet" href="styles/style_h.css">
     <link rel="stylesheet" href="sweetalert2.min.css">
+=======
+    <link rel="stylesheet" href="styles/historial.css">
+>>>>>>> 68d126af1b9e0d5030822ecc80575f0f31f56424
     <script defer src="https://kit.fontawesome.com/47abef14b3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -23,56 +27,56 @@
 
     <header class="header">
         <nav class="nav">
-            <a href="/" class="logo nav-link">
+            <a href="/" class="logo">
                 <img alt="" class="fas img-logo" importance="auto" loading="auto" src="./images/taxi.ico" />
-
                 Taxiflow</a>
             <button class="nav-toggle" aria-label="Abrir menú">
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-menu">
-                <li class="nav-menu-item nav-link">
-                    <a href="/" class="nav-menu-link nav-link">
+                <li class="nav-menu-item">
+                    <a href="/" class="nav-menu-link">
                         <i class="fas fa-home"></i>Home</a>
                 </li>
-                <!--
-                    <li class="nav-menu-item nav-link">
-                    <a href="#" class="nav-menu-link nav-link">Help</a>
-                    </li>
-                -->
-                <li class="nav-menu-item nav-link">
-                    <a href="/historial" class="nav-menu-link nav-link nav-menu-link_active"><i class="fas fa-history"></i> Historial</a>
+                <li class="nav-menu-item">
+                    <a href="/historial" class="nav-menu-link"><i class="fas fa-history"></i> Historial</a>
                 </li>
             </ul>
         </nav>
     </header>
 
     <div class="body-content">
-        
+
 
         <div class="fecha-div">
-           <form class="fecha">
-               <h3>Mes y hora de inicio:</h3>
-               <input class="fecha-a" data-mes="formulario del mes" id="date-1" for="date-1" type="date">
-               <input class="fecha-a" data-horai="Hora de inicio" id="date-2" type="time">
-      
-               <h3>Mes y hora final:</h3>
-               <input class="fecha-a" data-horaf="Hora final" id="date-3" type="date">
-               <input class="fecha-a"  id="date-4"  type="time">
-               <input id="button-trace" type="button" value="Trazar trayectoria">
-           </form>
-        </div>
-        
-        <div id="map-template"> 
-            <div class="button-overlay">
-                <button id='zoom'class="zoom-to-data-buttom" type="submit">
-                <i class="fas fa-crosshairs"></i>
-            </button>
-            
-        </div>
-    </div>
+            <form class="fecha">
 
-         </div>
+                <div class="continer-time">
+                    <h3>Mes y hora de inicio:</h3>
+                    <input class="fecha-a" data-mes="formulario del mes" id="date-1" for="date-1" type="date">
+                    <input class="fecha-a" data-horai="Hora de inicio" id="date-2" type="time">
+                </div>
+
+                <div class="continer-time">
+                    <h3>Mes y hora final:</h3>
+                    <input class="fecha-a" data-horaf="Hora final" id="date-3" type="date">
+                    <input class="fecha-a" id="date-4" type="time">
+                </div>
+
+                <input id="button-trace" type="button" value="Trazar trayectoria">
+            </form>
+        </div>
+
+        <div id="map-template">
+            <div class="button-overlay">
+                <button id='zoom' class="zoom-to-data-buttom" type="submit">
+                    <i class="fas fa-crosshairs"></i>
+                </button>
+
+            </div>
+        </div>
+
+    </div>
 
     </div>
 
@@ -108,9 +112,13 @@
         crossorigin=""></script>
     <script src="./scripts/jsNavBar.js"></script>
     <script src="scripts/history.js"></script>
+<<<<<<< HEAD
     <script src="sweetalert2.min.js"></script>
 
     
+=======
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+>>>>>>> 68d126af1b9e0d5030822ecc80575f0f31f56424
 
 </body>
 
