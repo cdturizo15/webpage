@@ -8,7 +8,6 @@ var polyline = null
 var button = document.getElementById('button-trace');
 var button1 = document.getElementById('zoom');
 
-
 button.addEventListener('click', function () {
     getHistory();
 });
@@ -23,7 +22,12 @@ async function getHistory() {
   const horaf = document.getElementById("date-4")  
   
   if(mesi.value == '' || mesf.value == ''){
-    alert("Ingresar fechas")
+    Swal.fire({
+      title: 'Error!',
+      text: 'Do you want to continue',
+      icon: 'error',
+      confirmButtonText: 'Cool'
+    })
   }
   else{
     var firstDate = Date.parse(mesi.value+'T'+horai.value)
