@@ -8,13 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/style_h.css">
-
     <script defer src="https://kit.fontawesome.com/47abef14b3.js" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
     <title>Taxiflow</title>
     <link rel="icon" href="./images/taxi.ico">
 </head>
@@ -59,22 +58,21 @@
                <h3>Mes y hora final:</h3>
                <input class="fecha-a" data-horaf="Hora final" id="date-3" type="date">
                <input class="fecha-a"  id="date-4"  type="time">
-               <input id="boton" type="button" value="Trazar trayectoria">
+               <input id="button-trace" type="button" value="Trazar trayectoria">
            </form>
         </div>
         
-        <div class="mapa"> 
-         <!-- Aqui va el mapa -->    
+        <div id="map-template"> 
+            <div class="button-overlay">
+                <button id='zoom'class="zoom-to-data-buttom" type="submit">
+                <i class="fas fa-crosshairs"></i>
+            </button>
+            
+        </div>
+    </div>
+
          </div>
-      <script>
-      const mes= document.getElementById("date-1")
-      const hora1=document.getElementById("date-2")
-      const horaf=document.getElementById("date-3")
-      
-      console.log(mes.dataset.mes)
-      console.log(hora1.dataset.horai)
-      console.log(horaf.dataset.horaf)
-      </script>
+
     </div>
 
     <footer class="footer">
@@ -107,8 +105,9 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
-    <script src="scripts/main.js"></script>
     <script src="./scripts/jsNavBar.js"></script>
+    <script src="scripts/history.js"></script>
+    
 
 </body>
 

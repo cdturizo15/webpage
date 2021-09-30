@@ -8,6 +8,7 @@ var button = document.getElementById('zoom');
 var latlngs = [];
 var polyline = null
 
+
 async function getGPS() {
   response = await fetch('http://'+fetchurl+'/gps');
   coordinates = await response.json();

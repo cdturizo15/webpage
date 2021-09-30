@@ -2,13 +2,14 @@ const express = require('express')
 const app = express();
 const mysql = require('mysql');
 const child_p = require('child_process')
-const {promisify} = require('util')
-const port = 8080
+const {promisify} = require('util');
+require('dotenv').config()
+const port = 80
 const connection = mysql.createConnection({
-    host: process.env.HOST, // HOST NAME
-    user: process.env.USER, // USER NAME
+    host: 'taxiflowdatabase.c0u6vxuknyg3.us-west-2.rds.amazonaws.com', // HOST NAME
+    user: 'taxiflow', // USER NAME
     database: 'taxiflow', // DATABASE NAME
-    password: process.env.PASS // DATABASE PASSWORD
+    password: 'David5597' // DATABASE PASSWORD
 });
 var lat = '';
 var lon = '';
@@ -27,6 +28,7 @@ connection.connect(err=>{
 
 //static
 app.use(express.static(__dirname + '/views'));
+app.use(express.json({limit: '1mb'}));
 
 //listening the server
 
@@ -36,7 +38,32 @@ app.use(require('./routes/routes'))
 app.post('/webhook', async(req,res)=>{
     child_p.exec('git reset --hard')
     child_p.exec('git pull origin master')
-})
+});
+
+app.post('/dates',async(req,res)=>{
+    dates = req.body
+    var start = dates[0]+' '+dates[1]
+    var end = dates[3]+' '+dates[2]
+    connection.query(`SELECT * FROM taxiflow.location
+            WHERE timestamp >= '${start.toString()}' AND timestamp <= '${end.toString()}'`, function(error, rows){
+        if(error){
+            throw error;
+        }else{ 
+            var lattlngs = [];
+            for (i in rows) {
+                lattlngs.push([rows[i].latitude,rows[i].longitude]);
+            }
+            /*console.log(lattlngs)
+            console.log(rows[0])
+            console.log(rows[rows.length - 1])*/
+        };   
+        res.json(
+            {
+                latlon: lattlngs
+            }
+        );           
+    });
+});
 
 app.get('/gps', async(req, res)=>{
     await connection.query(`SELECT * FROM taxiflow.location ORDER BY idlocation DESC`, function(error, rows){

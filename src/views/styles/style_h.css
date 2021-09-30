@@ -41,7 +41,15 @@
     transition: background-color .75s;
 }
 
-#boton{
+.button-overlay {
+    text-align: right;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index:1000 ;
+  }
+
+#button-trace{
     background-color: #f1666e;
     margin-left: 75px;
     color: white;
@@ -54,8 +62,17 @@
     transition: border .75;    
     box-shadow: 0px 5px #999;
 }
+#map-template {
+    width: 90%;
+    align-items: center;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 50vh;
+    background: gray;
+  }
 
-#boton:hover{
+#button-trace:hover{
     background-color:white;
     border: solid #f1666e;
     color:  #f1666e;
@@ -65,7 +82,7 @@
     background-color:#f1666e;
 }
 
-#boton:active{
+#button-trace:active{
     transform:translateY(2px);
     box-shadow: 0px 3px #666;
 }
