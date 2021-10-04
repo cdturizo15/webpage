@@ -1,3 +1,6 @@
+.container {
+  padding-top: 50px;
+}
 .texto h2 {
   margin: 2em;
 }
@@ -5,27 +8,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-#map {
-  align-items: center;
-  text-align: center;
-  display: initial;
-}
-#map-template {
-  width: 90%;
-  align-items: center;
-  margin: auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  height: 70vh;
-  background: gray;
-}
-.button-overlay {
-  text-align: right;
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  z-index:1000 ;
 }
 .img {
   width: 400px;
@@ -41,6 +23,7 @@
   justify-content: center;
   list-style: none;
   display: flex;
+  padding-left: 23px;
 }
 .position-item {
   text-decoration: none;
