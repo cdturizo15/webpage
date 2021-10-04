@@ -19,12 +19,12 @@ var time = '';
 
 // settings
 app.listen(port);
-/*
+
 promisify(connection.query);
 connection.connect(err=>{
     if(err) throw err
     console.log('DB connected')
-})*/
+})
 
 
 //static
@@ -40,7 +40,7 @@ app.post('/webhook', async(req,res)=>{
     child_p.exec('git reset --hard')
     child_p.exec('git pull origin master')
 });
-/*
+
 app.post('/dates',async(req,res)=>{
     dates = req.body
     var start = dates[0]+' '+dates[1]
@@ -53,10 +53,10 @@ app.post('/dates',async(req,res)=>{
             var lattlngs = [];
             for (i in rows) {
                 lattlngs.push([rows[i].latitude,rows[i].longitude]);
-            }
+            }/*
             console.log(lattlngs)
             console.log(rows[0])
-            console.log(rows[rows.length - 1])
+            console.log(rows[rows.length - 1])*/
 
         };   
         res.json(
@@ -89,7 +89,7 @@ app.get('/gps', async(req, res)=>{
         }
     );
 })
-*/
+
 // Port listening
 app.listen(app.get('port'), () =>{
     console.log('Server on port', port);     
