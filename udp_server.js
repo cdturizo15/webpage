@@ -6,10 +6,11 @@ const mysql = require('mysql');
 require('dotenv').config()
 
 const connection = mysql.createConnection({
-    host: process.env.HOST, // HOST NAME
-    user: process.env.USER, // USER NAME
-    database: 'taxiflow', // DATABASE NAME
-    password: process.env.PASS // DATABASE PASSWORD
+    host: process.env.HOST,
+    port: 3306,
+    user: process.env.USER,
+    database: 'taxiflow', 
+    password: process.env.PASS
 });
 
 connection.connect(function(error){
@@ -22,7 +23,7 @@ connection.connect(function(error){
 
 
 socket.on('listening', () => {
-    console.log(`UDP server listening on port 9000`);
+    console.log(`UDP server listening on port`, process.env.UDPPORT);
   });
 
 socket.on('message',(message)=>{

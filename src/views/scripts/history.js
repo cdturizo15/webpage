@@ -17,11 +17,14 @@ button1.addEventListener('click', function () {
 });
 
 async function getHistory() {
+  const licence = document.getElementById("licence-id")
   const mesi = document.getElementById("date-1")
   const horai = document.getElementById("date-2")
   const mesf = document.getElementById("date-3")
   const horaf = document.getElementById("date-4")
-
+  console.log(licence.value)
+  console.log(horai.value)
+  console.log(horaf.value)
   if (mesi.value == '' || mesf.value == '') {
     Swal.fire({
       icon: 'error',
@@ -38,7 +41,7 @@ async function getHistory() {
     if (horaf.value == '') {
       horaf.value = '23:59'
     }
-    var data = [mesi.value, horai.value, horaf.value, mesf.value]
+    var data = [mesi.value, horai.value, horaf.value, mesf.value, licence.value]
     console.log(horai.value)
     if (firstDate > lastDate) {
       Swal.fire({

@@ -79,7 +79,7 @@ color: #f1666e;
   position: initial;
   text-align: center;
   align-items: center;
-  height: 200px;
+  height: 60px;
   bottom: 0;
   left: 0;
   right: 0;
@@ -215,5 +215,7 @@ input:checked + .slider:before {
     outline: none;
   }
 }
-
+li {
+  float: Left;
+}
  

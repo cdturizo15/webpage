@@ -4,7 +4,7 @@ const mysql = require('mysql');
 const child_p = require('child_process')
 const {promisify} = require('util');
 require('dotenv').config()
-const port = 8080
+const port = 80
 const connection = mysql.createConnection({
     host: process.env.HOST, // HOST NAME
     user: process.env.USER, // USER NAME
@@ -45,7 +45,7 @@ app.post('/dates',async(req,res)=>{
     var start = dates[0]+' '+dates[1]
     var end = dates[3]+' '+dates[2]
     connection.query(`SELECT * FROM taxiflow.location
-            WHERE timestamp >= '${start.toString()}' AND timestamp <= '${end.toString()}'`, function(error, rows){
+            WHERE timestamp >= '${start.toString()}' AND timestamp <= '${end.toString()}' AND idtaxi = '${dates[4].toString()}'`, function(error, rows){
         if(error){
             throw error;
         }else{ 

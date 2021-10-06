@@ -4,7 +4,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
+    <meta name="theme-color" 
+    content="#f1666e" 
+    media="(prefers-color-scheme: light)">
+    <meta name="theme-color" 
+    content="#f1666e" 
+    media="(prefers-color-scheme: dark)">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -41,21 +46,28 @@
     </header>
 
     <div class="body-content">
-
-
         <div class="fecha-div">
             <form class="fecha">
-
+                <div class="licence-plate-div">
+                    <h3>Licence Plate:</h3>
+                    <select id="licence-id">
+                        <option value="1">AAA-000</option>
+                        <option value="2">CCC-000</option>
+                        <option value="3">DDD-000</option>
+                        <option value="4">JJJ-000</option>
+                        <option value="5">NNN-000</option>
+                    </select>
+                </div>
                 <div class="continer-time">
                     <h3>Mes y hora de inicio:</h3>
                     <input class="fecha-a" data-mes="formulario del mes" id="date-1" for="date-1" type="date">
-                    <input class="fecha-a" data-horai="Hora de inicio" id="date-2" type="time">
+                    <input class="fecha-a" data-horai="Hora de inicio" id="date-2" type="time" value="00:01">
                 </div>
 
                 <div class="continer-time">
                     <h3>Mes y hora final:</h3>
                     <input class="fecha-a" data-horaf="Hora final" id="date-3" type="date">
-                    <input class="fecha-a" id="date-4" type="time">
+                    <input class="fecha-a" id="date-4" type="time" value="23:59">
                 </div>
 
                 <input id="button-trace" type="button" value="Trazar trayectoria">
@@ -79,24 +91,19 @@
         <div class="continer">
             <ul class="footer-email">
                 <li class="footer-item">
-                    Angelica Barranco Aragon -
-                    <small class="text-muted">mbarranco@uninorte.edu.co</small>
+                    <small class="text-muted">mbarranco@uninorte.edu.co ~ </small>
                 </li>
                 <li class="footer-item">
-                    Dierick Brochero Niebles -
-                    <small class="text-muted">dierickb@uninorte.edu.co</small>
+                    <small class="text-muted"> dierickb@uninorte.edu.co ~ </small>
                 </li>
                 <li class="footer-item">
-                    Cristian Martinez Turizo -
-                    <small class="text-muted">cdturizo@uninorte.edu.co</small>
+                    <small class="text-muted"> cdturizo@uninorte.edu.co ~ </small>
                 </li>
                 <li class="footer-item">
-                    Nicolas Casas Parra -
-                    <small class="text-muted">ncasas@uninorte.edu.co</small>
+                    <small class="text-muted"> ncasas@uninorte.edu.co ~ </small>
                 </li>
                 <li class="footer-item">
-                    Juan Orozco Flores -
-                    <small class="text-muted">dojuan@uninorte.edu.co</small>
+                    <small class="text-muted"> dojuan@uninorte.edu.co</small>
                 </li>
             </ul>
         </div>

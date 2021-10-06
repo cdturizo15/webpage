@@ -1,4 +1,10 @@
-.fecha {
+.bottom-nav { 
+  position: fixed; /* maybe sticky is better if part of overall page layout? */
+  bottom: 100vh; /* fallback? */
+  bottom: calc(100vh - env(safe-area-inset-bottom)); /* new thing */
+}
+
+.fecha{
   padding-bottom: 20px;
   padding-top: 20px;
   display: flex;
@@ -16,12 +22,12 @@
   background-color: rgb(123, 192, 233);
   justify-content: center;
 }
-.fecha-a {
+.fecha-a, .licence{
   margin-right: 10px;
   background-color: white;
   transition: background-color 0.75s;
 }
-.fecha-a:hover {
+.fecha-a:hover, .licence:hover {
   background-color: #f1666e;
 }
 .button-overlay {
@@ -91,4 +97,8 @@
       align-items: center;
       justify-content: center;
     }
+  }
+
+  li {
+    float: Left;
   }
