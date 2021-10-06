@@ -3,6 +3,8 @@ const app = express();
 const mysql = require('mysql');
 const child_p = require('child_process')
 const {promisify} = require('util');
+const { timeStamp } = require('console');
+const { parse } = require('path');
 require('dotenv').config()
 const port = 80
 const connection = mysql.createConnection({
@@ -19,6 +21,7 @@ var time = '';
 
 // settings
 app.listen(port);
+
 promisify(connection.query);
 connection.connect(err=>{
     if(err) throw err
@@ -40,6 +43,37 @@ app.post('/webhook', async(req,res)=>{
     child_p.exec('git pull origin master')
 });
 
+app.post('/timestamp',async(req,res)=>{
+    coordinates = req.body
+    let lat = coordinates[1]
+    let lon = coordinates[0]
+    let lati = parseFloat(lat)-0.0004
+    let latf = parseFloat(lat)+0.0004
+    let loni = parseFloat(lon)+0.0004
+    let lonf = parseFloat(lon)-0.0004
+    console.log(lati.toFixed(4))
+    console.log(latf.toFixed(4))
+    console.log(loni.toFixed(4))
+    console.log(lonf.toFixed(4))
+    connection.query(`SELECT * FROM taxiflow.location
+            WHERE latitude BETWEEN '${lati.toFixed(4)}' AND '${latf.toFixed(4)}' AND longitude BETWEEN '${loni.toFixed(4)}' AND '${lonf.toFixed(4)}'`, function(error, rows){
+        if(error){
+            throw error;
+        }else{ 
+            var timestamp = [];
+            for (i in rows) {
+                timestamp.push(rows[i].timestamp);
+            }
+        };   
+        res.json(
+            {
+                dates: timestamp,
+            }
+        );           
+    });
+    
+})
+
 app.post('/dates',async(req,res)=>{
     dates = req.body
     var start = dates[0]+' '+dates[1]
@@ -53,14 +87,14 @@ app.post('/dates',async(req,res)=>{
             for (i in rows) {
                 lattlngs.push([rows[i].latitude,rows[i].longitude]);
             }
-            /*console.log(lattlngs)
+            console.log(lattlngs)
             console.log(rows[0])
-            console.log(rows[rows.length - 1])*/
+            console.log(rows[rows.length - 1])
 
         };   
         res.json(
             {
-                latlon: lattlngs
+                latlon: lattlngs,
             }
         );           
     });
@@ -88,6 +122,7 @@ app.get('/gps', async(req, res)=>{
         }
     );
 })
+
 
 // Port listening
 app.listen(app.get('port'), () =>{
