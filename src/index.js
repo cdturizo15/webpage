@@ -61,13 +61,16 @@ app.post('/timestamp',async(req,res)=>{
             throw error;
         }else{ 
             var timestamp = [];
+            var location = [];
             for (i in rows) {
                 timestamp.push(rows[i].timestamp);
+                location.push([rows[i].latitude, rows[i].longitude]);
             }
         };   
         res.json(
             {
                 dates: timestamp,
+                location: location,
             }
         );           
     });

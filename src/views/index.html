@@ -1,101 +1,108 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="theme-color" 
-    content="#f1666e" 
-    media="(prefers-color-scheme: light)">
-    <meta name="theme-color" 
-    content="#f1666e" 
-    media="(prefers-color-scheme: dark)">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <title>Taxiflow</title>
-    <link rel="icon" href="./images/taxi.ico">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="theme-color"
+            content="#f1666e"
+            media="(prefers-color-scheme: light)">
+        <meta name="theme-color"
+            content="#f1666e"
+            media="(prefers-color-scheme: dark)">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <title>Taxiflow</title>
+        <link rel="icon" href="./images/taxi.ico">
 
 
-    <link rel="stylesheet" href="styles/style.css" />
-    <link rel="stylesheet" href="styles/indexStyle.css" />
+        <link rel="stylesheet" href="styles/style.css" />
+        <link rel="stylesheet" href="styles/indexStyle.css" />
 
-    <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossorigin="" />
-    <script defer src="https://kit.fontawesome.com/47abef14b3.js" crossorigin="anonymous"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap"
+            rel="stylesheet" />
+        <link rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+            integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="crossorigin=""
+            />
+        <script defer src="https://kit.fontawesome.com/47abef14b3.js"
+            crossorigin="anonymous"></script>
 
 
-</head>
+    </head>
 
-<body>
+    <body>
 
-    <header class="header">
-        <nav class="nav">
-            <a href="/" class="logo">
-                <img alt="" class="fas img-logo" importance="auto" loading="auto" src="./images/taxi.ico" />
+        <header class="header">
+            <nav class="nav">
+                <a href="/" class="logo">
+                    <img alt="" class="fas img-logo" importance="auto"
+                        loading="auto" src="./images/taxi.ico" />
 
-                Taxiflow</a>
-            <button class="nav-toggle" aria-label="Abrir menú">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-menu">
-                <li class="nav-menu-item">
-                    <a href="/" class="nav-menu-link">
-                        <i class="fas fa-home"></i>Home</a>
+                    Taxiflow</a>
+                <button class="nav-toggle" aria-label="Abrir menú">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-menu">
+                    <li class="nav-menu-item">
+                        <a href="/" class="nav-menu-link">
+                            <i class="fas fa-home"></i>Home</a>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a href="/historial" class="nav-menu-link"><i class="fas
+                                fa-history"></i> Historial</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="body-content">
+            <div class="imagen">
+                <img alt="" class="img" importance="auto" loading="auto"
+                    src="https://i.pinimg.com/originals/d7/ae/01/d7ae0170d3d5ffcbaa7f02fdda387a3b.gif"
+                    />
+            </div>
+
+            <ul class="position">
+                <li class="position-item">
+                    <a class="position-item-data">
+                        Longitud:
+                        <small class="text-muted" id="lon"></small>
+                    </a>
                 </li>
-                <li class="nav-menu-item">
-                    <a href="/historial" class="nav-menu-link"><i class="fas fa-history"></i> Historial</a>
+
+                <li class="position-item">
+                    <a class="position-item-data">
+                        Latitud:
+                        <small class="text-muted" id="lat"></small>
+                    </a>
+                </li>
+
+                <li class="position-item">
+                    <a class="position-item-data">
+                        Fecha:
+                        <small class="text-muted" id="date"></small>
+                    </a>
+                </li>
+
+                <li class="position-item">
+                    <a class="position-item-data">
+                        Hora:
+                        <small class="text-muted" id="time"></small>
+                    </a>
                 </li>
             </ul>
-        </nav>
-    </header>
 
-    <div class="body-content">
-        <div class="imagen">
-            <img alt="" class="img" importance="auto" loading="auto"
-                src="https://i.pinimg.com/originals/d7/ae/01/d7ae0170d3d5ffcbaa7f02fdda387a3b.gif" />
         </div>
-
-        <ul class="position">
-            <li class="position-item">
-                <a class="position-item-data">
-                    Longitud:
-                    <small class="text-muted" id="lon"></small>
-                </a>
-            </li>
-
-            <li class="position-item">
-                <a class="position-item-data">
-                    Latitud:
-                    <small class="text-muted" id="lat"></small>
-                </a>
-            </li>
-
-            <li class="position-item">
-                <a class="position-item-data">
-                    Fecha:
-                    <small class="text-muted" id="date"></small>
-                </a>
-            </li>
-
-            <li class="position-item">
-                <a class="position-item-data">
-                    Hora:
-                    <small class="text-muted" id="time"></small>
-                </a>
-            </li>
-        </ul>
-
-</div>
 
         <div id="map-template">
             <div class="button-overlay">
-                    <button id='zoom'class="zoom-to-data-buttom" type="submit">
+                <button id='zoom'class="zoom-to-data-buttom" type="submit">
                     <i class="fas fa-crosshairs"></i>
                 </button>
-                
+
             </div>
         </div>
 
@@ -105,16 +112,20 @@
             <div class="continer">
                 <ul class="footer-email">
                     <li class="footer-item">
-                        <small class="text-muted">mbarranco@uninorte.edu.co ~ </small>
+                        <small class="text-muted">mbarranco@uninorte.edu.co ~
+                        </small>
                     </li>
                     <li class="footer-item">
-                        <small class="text-muted"> dierickb@uninorte.edu.co ~ </small>
+                        <small class="text-muted"> dierickb@uninorte.edu.co ~
+                        </small>
                     </li>
                     <li class="footer-item">
-                        <small class="text-muted"> cdturizo@uninorte.edu.co ~ </small>
+                        <small class="text-muted"> cdturizo@uninorte.edu.co ~
+                        </small>
                     </li>
                     <li class="footer-item">
-                        <small class="text-muted"> ncasas@uninorte.edu.co ~ </small>
+                        <small class="text-muted"> ncasas@uninorte.edu.co ~
+                        </small>
                     </li>
                     <li class="footer-item">
                         <small class="text-muted"> dojuan@uninorte.edu.co</small>
@@ -122,15 +133,14 @@
                 </ul>
             </div>
         </footer>
-    
 
 
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossorigin=""></script>
-    <script src="scripts/main.js"></script>
-    <script src="./scripts/jsNavBar.js"></script>
 
-</body>
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="crossorigin=""></script>
+        <script src="scripts/main.js"></script>
+        <script src="./scripts/jsNavBar.js"></script>
+
+    </body>
 
 </html>
