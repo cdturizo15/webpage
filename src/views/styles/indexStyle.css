@@ -33,11 +33,24 @@
 
 @media (max-width: 768px) {
   .position {
-    display: block;
     font-size: 30px;
+    padding-left: 0px;
   }
   .position-item-data {
     text-align: center;
     align-items: center;
+  }
+  .img {
+    width: 400px;
+    height: 300px;
+  }
+}
+@media (max-width: 5000px) {
+  .position {
+    display: block;   
+  }
+  .img {
+    width: 350px;
+    height: 262.85px;
   }
 }

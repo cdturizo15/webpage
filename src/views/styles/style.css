@@ -13,6 +13,12 @@ body {
 ul {
   padding: 0px;
 }
+/*ul {
+  padding: 0px;
+}
+li {
+  float: Left;
+}*/
 .container {
   padding-top: 50px;
 }
@@ -86,7 +92,7 @@ ul {
   position: initial;
   text-align: center;
   align-items: center;
-  height: 60px;
+  height: 140px;
   bottom: 0;
   left: 0;
   right: 0;
@@ -96,6 +102,7 @@ ul {
   text-align: center;
   list-style: none;
   line-height: 25px;
+  height: auto;
 }
 .footer-item {
   font-size: 20px;
@@ -226,7 +233,27 @@ input:checked + .slider:before {
     outline: none;
   }
 }
-li {
-  float: Left;
+
+@media (max-width: 500px) {
+  #map-template {
+    height: 85vh;
+  }
+  .text-muted {
+    display: none !important;
+  }
+  .logo {
+    font-size: 20px;
+    padding: 0 8px;
+  }
+  .img-logo {
+    width: 30px;
+  }
+  .nav-toggle {
+    font-size: 30px;
+    padding: 0 8px;
+  }
+  .footer-email{
+    vertical-align: middle;
+    padding-top: 8px;
+  }
 }
- 
