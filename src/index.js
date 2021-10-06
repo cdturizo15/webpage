@@ -3,14 +3,15 @@ const app = express();
 const mysql = require('mysql');
 const child_p = require('child_process')
 const {promisify} = require('util');
+const { timeStamp } = require('console');
+const { parse } = require('path');
 require('dotenv').config()
-const port = 80
+const port = 8080
 const connection = mysql.createConnection({
-    host: 'database-design.csbzqvh4vhlv.us-west-2.rds.amazonaws.com',
-    port: 3306,
-    user: 'taxiflow', 
-    database: 'taxiflow', 
-    password: 'TaxiFlow'
+    host: process.env.HOST, // HOST NAME
+    user: process.env.USER, // USER NAME
+    database: 'taxiflow', // DATABASE NAME
+    password: process.env.PASS // DATABASE PASSWORD
 });
 var lat = '';
 var lon = '';
@@ -42,6 +43,37 @@ app.post('/webhook', async(req,res)=>{
     child_p.exec('git pull origin master')
 });
 
+app.post('/timestamp',async(req,res)=>{
+    coordinates = req.body
+    let lat = coordinates[1]
+    let lon = coordinates[0]
+    let lati = parseFloat(lat)-0.0004
+    let latf = parseFloat(lat)+0.0004
+    let loni = parseFloat(lon)+0.0004
+    let lonf = parseFloat(lon)-0.0004
+    console.log(lati.toFixed(4))
+    console.log(latf.toFixed(4))
+    console.log(loni.toFixed(4))
+    console.log(lonf.toFixed(4))
+    connection.query(`SELECT * FROM taxiflow.location
+            WHERE latitude BETWEEN '${lati.toFixed(4)}' AND '${latf.toFixed(4)}' AND longitude BETWEEN '${loni.toFixed(4)}' AND '${lonf.toFixed(4)}'`, function(error, rows){
+        if(error){
+            throw error;
+        }else{ 
+            var timestamp = [];
+            for (i in rows) {
+                timestamp.push(rows[i].timestamp);
+            }
+        };   
+        res.json(
+            {
+                dates: timestamp,
+            }
+        );           
+    });
+    
+})
+
 app.post('/dates',async(req,res)=>{
     dates = req.body
     var start = dates[0]+' '+dates[1]
@@ -54,11 +86,7 @@ app.post('/dates',async(req,res)=>{
             var lattlngs = [];
             for (i in rows) {
                 lattlngs.push([rows[i].latitude,rows[i].longitude]);
-<<<<<<< HEAD
             }
-=======
-            }/*
->>>>>>> 05ddeaa01a16cfe01ae0f16a0639b42f77b5b09a
             console.log(lattlngs)
             console.log(rows[0])
             console.log(rows[rows.length - 1])
@@ -66,7 +94,7 @@ app.post('/dates',async(req,res)=>{
         };   
         res.json(
             {
-                latlon: lattlngs
+                latlon: lattlngs,
             }
         );           
     });

@@ -4,6 +4,7 @@ var fetchurl = location.hostname;
 L.tileLayer(tileURL).addTo(map)
 let markeri = null
 let markerf = null
+let popupMarker = null
 var polyline = null
 var button = document.getElementById('button-trace');
 var button1 = document.getElementById('zoom');
@@ -14,6 +15,24 @@ button.addEventListener('click', function () {
 button1.addEventListener('click', function () {
   map.setView(latlngs[0], 17)
 });
+
+map.on('popupopen', async function () {
+  
+  var popup = polyline.getPopup();
+  coordinates = [popup.getLatLng().lng.toFixed(4), popup.getLatLng().lat.toFixed(4)]
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(coordinates)
+  }
+  console.log(coordinates)
+  const response = await fetch('/timestamp', options);
+  const dates = await response.json();
+  await popup.setContent('Pase por aqui: '+dates.dates.length);
+});
+
 
 async function getHistory() {
   const mesi = document.getElementById("date-1")
@@ -64,7 +83,6 @@ async function getHistory() {
       }
       const response = await fetch('/dates', options);
       const dates = await response.json();
-      console.log(dates);
       latlngs = dates.latlon;
       if (latlngs == '') {
         Swal.fire({
@@ -83,7 +101,8 @@ async function getHistory() {
         }
         markeri = L.marker(latlngs[0]).bindPopup('Initial position: ' + latlngs[0])
         markerf = L.marker(latlngs[latlngs.length - 1]).bindPopup('Final position' + latlngs[latlngs.length - 1])
-        polyline = L.polyline(latlngs, { color: 'red', smoothFactor: 0.5 })
+        polyline = L.polyline(latlngs, { color: 'red', smoothFactor: 0.5 }).bindPopup()
+
         map.addLayer(polyline)
         map.addLayer(markeri)
         map.addLayer(markerf)
