@@ -6,10 +6,11 @@ const {promisify} = require('util');
 require('dotenv').config()
 const port = 80
 const connection = mysql.createConnection({
-    host: 'taxiflowdatabase.c0u6vxuknyg3.us-west-2.rds.amazonaws.com', // HOST NAME
-    user: 'taxiflow', // USER NAME
-    database: 'taxiflow', // DATABASE NAME
-    password: 'David5597' // DATABASE PASSWORD
+    host: 'database-design.csbzqvh4vhlv.us-west-2.rds.amazonaws.com',
+    port: 3306,
+    user: 'taxiflow', 
+    database: 'taxiflow', 
+    password: 'TaxiFlow'
 });
 var lat = '';
 var lon = '';
@@ -53,9 +54,9 @@ app.post('/dates',async(req,res)=>{
             for (i in rows) {
                 lattlngs.push([rows[i].latitude,rows[i].longitude]);
             }
-            /*console.log(lattlngs)
+            console.log(lattlngs)
             console.log(rows[0])
-            console.log(rows[rows.length - 1])*/
+            console.log(rows[rows.length - 1])
 
         };   
         res.json(
@@ -88,6 +89,7 @@ app.get('/gps', async(req, res)=>{
         }
     );
 })
+
 
 // Port listening
 app.listen(app.get('port'), () =>{
