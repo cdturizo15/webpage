@@ -1,10 +1,9 @@
-.bottom-nav { 
+.bottom-nav {
   position: fixed; /* maybe sticky is better if part of overall page layout? */
   bottom: 100vh; /* fallback? */
   bottom: calc(100vh - env(safe-area-inset-bottom)); /* new thing */
 }
-
-.fecha{
+.fecha {
   padding-bottom: 20px;
   padding-top: 20px;
   display: flex;
@@ -23,12 +22,12 @@
   background-color: rgb(123, 192, 233);
   justify-content: center;
 }
-.fecha-a, .licence{
+.fecha-a {
   margin-right: 10px;
   background-color: white;
   transition: background-color 0.75s;
 }
-.fecha-a:hover, .licence:hover {
+.fecha-a:hover {
   background-color: #f1666e;
 }
 .ruta {
@@ -76,13 +75,26 @@
   transform: translateY(2px);
   box-shadow: 0px 3px #666;
 }
+#button-trace:hover {
+  background-color: white;
+  border: solid #f1666e;
+  color: #f1666e;
+}
+#button-trace:active {
+  transform: translateY(2px);
+  box-shadow: 0px 3px #666;
+}
 @media (max-width: 768px) {
   .fecha {
     display: block;
     align-items: center;
     justify-content: center;
-  }}
-
-  li {
-    float: Left;
   }
+  #button-trace {
+    background-color: #f1666e;
+    margin-left: 0px;
+  }
+  .continer-time {
+    padding: 5px;
+  }
+}
