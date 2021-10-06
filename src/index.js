@@ -20,6 +20,7 @@ var time = '';
 
 // settings
 app.listen(port);
+
 promisify(connection.query);
 connection.connect(err=>{
     if(err) throw err
@@ -53,7 +54,11 @@ app.post('/dates',async(req,res)=>{
             var lattlngs = [];
             for (i in rows) {
                 lattlngs.push([rows[i].latitude,rows[i].longitude]);
+<<<<<<< HEAD
             }
+=======
+            }/*
+>>>>>>> 05ddeaa01a16cfe01ae0f16a0639b42f77b5b09a
             console.log(lattlngs)
             console.log(rows[0])
             console.log(rows[rows.length - 1])
