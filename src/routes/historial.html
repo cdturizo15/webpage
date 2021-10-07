@@ -11,11 +11,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/historial.css">
-    <link rel="stylesheet" href="sweetalert2.min.css">
     <script defer src="https://kit.fontawesome.com/47abef14b3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossorigin="" />
+        crossorigin />
     <title>Taxiflow</title>
     <link rel="icon" href="./images/taxi.ico">
 </head>
@@ -24,7 +23,7 @@
 
     <header class="header">
         <nav class="nav">
-            <a href="/" class="logo nav-link">
+            <a href="/" class="logo">
                 <img alt="" class="fas img-logo" importance="auto" loading="auto" src="./images/taxi.ico" />
 
                 Taxiflow</a>
@@ -32,18 +31,13 @@
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-menu">
-                <li class="nav-menu-item nav-link">
-                    <a href="/" class="nav-menu-link nav-link">
+                <li class="nav-menu-item">
+                    <a href="/" class="nav-menu-link">
                         <i class="fas fa-home"></i>Home</a>
                 </li>
-                <!--
-                    <li class="nav-menu-item nav-link">
-                    <a href="#" class="nav-menu-link nav-link">Help</a>
-                    </li>
-                -->
-                <li class="nav-menu-item nav-link">
-                    <a href="/historial" class="nav-menu-link nav-link nav-menu-link_active"><i
-                            class="fas fa-history"></i> Historial</a>
+                <li class="nav-menu-item">
+                    <a href="/historial" class="nav-menu-link"><i class="fas
+                                fa-history"></i> Historial</a>
                 </li>
             </ul>
         </nav>
@@ -121,9 +115,7 @@
         crossorigin=""></script>
     <script src="./scripts/jsNavBar.js"></script>
     <script src="scripts/history.js"></script>
-
-
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 
