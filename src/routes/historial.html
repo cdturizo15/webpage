@@ -14,7 +14,7 @@
     <script defer src="https://kit.fontawesome.com/47abef14b3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossorigin="" />
+        crossorigin />
     <title>Taxiflow</title>
     <link rel="icon" href="./images/taxi.ico">
 </head>
@@ -23,7 +23,7 @@
 
     <header class="header">
         <nav class="nav">
-            <a href="/" class="logo nav-link">
+            <a href="/" class="logo">
                 <img alt="" class="fas img-logo" importance="auto" loading="auto" src="./images/taxi.ico" />
 
                 Taxiflow</a>
@@ -31,18 +31,13 @@
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-menu">
-                <li class="nav-menu-item nav-link">
-                    <a href="/" class="nav-menu-link nav-link">
+                <li class="nav-menu-item">
+                    <a href="/" class="nav-menu-link">
                         <i class="fas fa-home"></i>Home</a>
                 </li>
-                <!--
-                    <li class="nav-menu-item nav-link">
-                    <a href="#" class="nav-menu-link nav-link">Help</a>
-                    </li>
-                -->
-                <li class="nav-menu-item nav-link">
-                    <a href="/historial" class="nav-menu-link nav-link nav-menu-link_active"><i
-                            class="fas fa-history"></i> Historial</a>
+                <li class="nav-menu-item">
+                    <a href="/historial" class="nav-menu-link"><i class="fas
+                                fa-history"></i> Historial</a>
                 </li>
             </ul>
         </nav>
@@ -52,7 +47,7 @@
         <div class="fecha-div">
             <form class="fecha">
                 <div class="licence-plate-div">
-                    <h3>Licence Plate:</h3>
+                    <h3>Placa:</h3>
                     <select id="licence-id">
                         <option value="1">AAA-000</option>
                         <option value="2">CCC-000</option>
@@ -87,8 +82,11 @@
         </div>
 
     </div>
-
+    <div id="allDataDiv">
+        <p id="p1"></p>
+        <p id="p2" class='p2'></p>
     </div>
+
 
     <footer class="footer">
         <ul class="footer-email">
@@ -120,9 +118,7 @@
         crossorigin=""></script>
     <script src="./scripts/jsNavBar.js"></script>
     <script src="scripts/history.js"></script>
-
-
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 

@@ -30,8 +30,11 @@ map.on('popupopen', async function () {
   console.log(coordinates)
   const response = await fetch('/timestamp', options);
   const dates = await response.json();
-  await popup.setContent('Pase por aqui: '+ dates.dates.length+' veces. '+dates.location[dates.location.length-1]);
-  console.log(dates.location[0][0])
+  await popup.setContent('Pase por aqui: '+ dates.dates.length+' veces.\n'+'Ultima vez: '+dates.dates[dates.dates.length-1], {maxWidth: "2px"});
+  var x = document.getElementById("allDataDiv");
+  x.querySelector("p").innerHTML = dates.location[0];
+  x.querySelector("#p2").innerHTML = dates.dates;
+  console.log(dates.location)
   console.log(dates.location.length)
 });
 

@@ -4,14 +4,20 @@
   margin: 0;
 }*/
 body {
+  left: 0;
+  right: 0;
+  margin: 0;
   font-family: "STIX Two Math", serif;
   justify-content: flex-end;
-  margin: 0%;
   padding: 0%;
   background-color: white;
 }
 ul {
   padding: 0px;
+  margin: 0;
+}
+h3{
+  margin: 0;
 }
 /*ul {
   padding: 0px;
@@ -50,11 +56,12 @@ li {
   width: 40px;
   vertical-align: middle;
 }
-.nav {
+.nav {  
+  
   left: 0;
   right: 0;
   padding: 0 40px;
-  position: fixed;
+  position:relative;
   display: flex;
   justify-content: space-between;
 }
