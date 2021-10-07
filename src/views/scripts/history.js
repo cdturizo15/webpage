@@ -30,8 +30,8 @@ map.on('popupopen', async function () {
   console.log(coordinates)
   const response = await fetch('/timestamp', options);
   const dates = await response.json();
-  await popup.setContent('Pase por aqui: '+ dates.dates.length+' veces');
-  console.log(dates.location[1][0])
+  await popup.setContent('Pase por aqui: '+ dates.dates.length+' veces. '+dates.location[dates.location.length-1]);
+  console.log(dates.location[0][0])
   console.log(dates.location.length)
 });
 
