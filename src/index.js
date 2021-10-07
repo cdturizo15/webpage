@@ -6,7 +6,7 @@ const {promisify} = require('util');
 const { timeStamp } = require('console');
 const { parse } = require('path');
 require('dotenv').config()
-const port = 80
+const port = 8080
 const connection = mysql.createConnection({
     host: process.env.HOST, // HOST NAME
     user: process.env.USER, // USER NAME

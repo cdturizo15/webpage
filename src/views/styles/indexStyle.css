@@ -13,19 +13,20 @@
   width: 400px;
   height: 300px;
 }
-.text-muted {
+.position-text-muted {
   font-style: italic;
 }
 .position {
-  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   list-style: none;
-  display: flex;
   padding-left: 23px;
+  text-align: center;
+  align-items: center;
 }
 .position-item {
+  display: inline-flex;
   text-decoration: none;
   font-size: 25px;
   padding: 10px;
@@ -34,11 +35,12 @@
 @media (max-width: 768px) {
   .position {
     font-size: 30px;
-    padding-left: 0px;
+    display: block;
   }
-  .position-item-data {
-    text-align: center;
+  .position-item {
+    text-align: left;
     align-items: center;
+    display: block;
   }
   .img {
     width: 400px;
@@ -46,9 +48,6 @@
   }
 }
 @media (max-width: 5000px) {
-  .position {
-    display: block;   
-  }
   .img {
     width: 350px;
     height: 262.85px;
