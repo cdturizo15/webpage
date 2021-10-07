@@ -25,7 +25,7 @@
   text-align: center;
   align-items: center;
 }
-.position-item {  
+.position-item {
   display: inline-flex;
   text-decoration: none;
   font-size: 25px;
@@ -35,12 +35,12 @@
 @media (max-width: 768px) {
   .position {
     font-size: 30px;
-    display: block;   
+    display: block;
   }
-  .position-item{    
+  .position-item {
     text-align: left;
     align-items: center;
-    display: block; 
+    display: block;
   }
   .img {
     width: 400px;
