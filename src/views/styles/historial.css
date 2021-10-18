@@ -87,6 +87,20 @@
 #p1,#p2{
   text-align: center;
 }
+p{
+  background-color: #EEEEEE;
+  border-width: 5px;
+  border-style: hidden;
+  border-color: #1F4CA4;
+  border-radius: 28px;
+  padding: 5%;
+}
+#allDataDiv{
+  height: 100px;
+  overflow-y: scroll;
+  width: 90%;
+  padding: 5%;
+}
 @media (max-width: 768px) {
   .fecha {
     display: block;

@@ -9,7 +9,7 @@ require('dotenv').config()
 const port = 8080
 const connection = mysql.createConnection({
     host: process.env.HOST, // HOST NAME
-    user: process.env.USER, // USER NAME
+    user: 'taxiflow', // USER NAME
     database: 'taxiflow', // DATABASE NAME
     password: process.env.PASS // DATABASE PASSWORD
 });
@@ -58,21 +58,26 @@ app.post('/timestamp',async(req,res)=>{
     connection.query(`SELECT * FROM taxiflow.location
             WHERE latitude BETWEEN '${lati.toFixed(4)}' AND '${latf.toFixed(4)}' AND longitude BETWEEN '${loni.toFixed(4)}' AND '${lonf.toFixed(4)}'`, function(error, rows){
         if(error){
+            console.log("hi")
             throw error;
         }else{ 
             var timestamp = [];
+            var infoTimeAndPos = [];
             var location = [];
             for (i in rows) {
                 timestamp.push(rows[i].timestamp);
                 location.push([rows[i].latitude, rows[i].longitude]);
+                infoTimeAndPos.push([rows[i].latitude,rows[i].longitude,rows[i].timestamp]);
             }
         };   
         res.json(
             {
-                dates: timestamp,
+                infoTimeAndPos: infoTimeAndPos,
                 location: location,
+                dates: timestamp,
             }
-        );           
+        );     
+
     });
     
 })
@@ -89,10 +94,8 @@ app.post('/dates',async(req,res)=>{
             var lattlngs = [];
             for (i in rows) {
                 lattlngs.push([rows[i].latitude,rows[i].longitude]);
+                
             }
-            console.log(lattlngs)
-            console.log(rows[0])
-            console.log(rows[rows.length - 1])
 
         };   
         res.json(
