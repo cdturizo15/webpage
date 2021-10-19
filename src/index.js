@@ -113,7 +113,7 @@ app.get('/cinfo', async(req, res)=>{
    connection.query(`SELECT l.latitude, l.longitude, l.date, l.time, t.license_plate, d.name
                             FROM taxiflow.location as l
                             INNER JOIN taxiflow.taxi as t ON l.idtaxi = t.idtaxi
-                            INNER JOIN taxiflow.driver as d ON d.id_driver = t.driver
+                            INNER JOIN taxiflow.driver as d ON d.id_driver = t.id_driver
                             GROUP BY l.idtaxi
                             ORDER BY l.idlocation DESC;`, function (error, rows) {
         if (error) {
