@@ -9,10 +9,7 @@
   align-items: center;
   justify-content: center;
 }
-.img {
-  width: 400px;
-  height: 300px;
-}
+
 .position-text-muted {
   font-style: italic;
 }
@@ -30,6 +27,30 @@
   text-decoration: none;
   font-size: 25px;
   padding: 10px;
+}
+p{
+  background-color: #EEEEEE;
+  border-width: 5px;
+  border-style: hidden;
+  border-color: #1F4CA4;
+  border-radius: 28px;
+  padding: 5%;
+}
+.img {
+  height: 70%;
+  width: 25%;
+  padding: 2%
+}
+#currentInfo{
+  height: 70%;
+  overflow-y: scroll;
+  width: 25%;
+  padding: 2%;
+}
+.imagen{
+  height: 25%;
+  width: 25%;
+  padding: 2%;
 }
 
 @media (max-width: 768px) {

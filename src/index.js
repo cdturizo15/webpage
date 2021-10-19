@@ -6,7 +6,7 @@ const {promisify} = require('util');
 const { timeStamp } = require('console');
 const { parse } = require('path');
 require('dotenv').config()
-const port = 8080
+const port = 80
 const connection = mysql.createConnection({
     host: process.env.HOST, // HOST NAME
     user: 'taxiflow', // USER NAME
@@ -17,6 +17,7 @@ var lat = '';
 var lon = '';
 var date = '';
 var time = '';
+var currentInfo = '';
 
 
 // settings
@@ -86,8 +87,10 @@ app.post('/dates',async(req,res)=>{
     dates = req.body
     var start = dates[0]+' '+dates[1]
     var end = dates[3]+' '+dates[2]
-    connection.query(`SELECT * FROM taxiflow.location
-            WHERE timestamp >= '${start.toString()}' AND timestamp <= '${end.toString()}' AND idtaxi = '${dates[4].toString()}'`, function(error, rows){
+    connection.query(`SELECT * FROM taxiflow.location as l
+                    INNER JOIN taxiflow.taxi as t ON l.idtaxi = t.idtaxi
+                    WHERE timestamp >= '${start.toString()}' AND timestamp <= '${end.toString()}'
+                    AND t.license_plate = '${dates[4].toString()}'`, function(error, rows){
         if(error){
             throw error;
         }else{ 
@@ -106,30 +109,41 @@ app.post('/dates',async(req,res)=>{
     });
 });
 
-app.get('/gps', async(req, res)=>{
-    await connection.query(`SELECT * FROM taxiflow.location ORDER BY idlocation DESC`, function(error, rows){
-        if(error){
+app.get('/cinfo', async(req, res)=>{
+   connection.query(`SELECT l.latitude, l.longitude, l.date, l.time, t.license_plate, d.name
+                            FROM taxiflow.location as l
+                            INNER JOIN taxiflow.taxi as t ON l.idtaxi = t.idtaxi
+                            INNER JOIN taxiflow.driver as d ON d.id_driver = t.driver
+                            GROUP BY l.idtaxi
+                            ORDER BY l.idlocation DESC;`, function (error, rows) {
+        if (error) {
             throw error;
-        }else{
-                location = rows[0]
-                lat = location.latitude;
-                lon = location.longitude;
-                date = location.date;
-                time = location.time;
+        } else {
+            currentInfo = rows;
+            vectorP = [];
+            location = rows[0]
+            lat = location.latitude;
+            lon = location.longitude;
+            date = location.date;
+            time = location.time;
+
+
         };
-        
+
     });
+
     res.json(
         {
+
             lat: lat,
             lon: lon,
             date: date,
-            time: time
+            time: time,
+            currentInfo: currentInfo,
         }
     );
 })
-
-
+ 
 // Port listening
 app.listen(app.get('port'), () =>{
     console.log('Server on port', port);     
