@@ -1,6 +1,11 @@
+.bottom-nav {
+  position: fixed; /* maybe sticky is better if part of overall page layout? */
+  bottom: 100vh; /* fallback? */
+  bottom: calc(100vh - env(safe-area-inset-bottom)); /* new thing */
+}
 .fecha {
-  padding-bottom: 20px;
-  padding-top: 20px;
+  padding-bottom: 5px;
+  padding-top: 5px;
   display: flex;
   background-color: rgb(123, 192, 233);
   align-items: center;
@@ -69,6 +74,32 @@
 #button-trace:active {
   transform: translateY(2px);
   box-shadow: 0px 3px #666;
+}
+#button-trace:hover {
+  background-color: white;
+  border: solid #f1666e;
+  color: #f1666e;
+}
+#button-trace:active {
+  transform: translateY(2px);
+  box-shadow: 0px 3px #666;
+}
+#p1,#p2{
+  text-align: center;
+}
+p{
+  background-color: #EEEEEE;
+  border-width: 5px;
+  border-style: hidden;
+  border-color: #1F4CA4;
+  border-radius: 28px;
+  padding: 5%;
+}
+#allDataDiv{
+  height: 100px;
+  overflow-y: scroll;
+  width: 90%;
+  padding: 5%;
 }
 @media (max-width: 768px) {
   .fecha {

@@ -15,6 +15,7 @@ var lat = '';
 var lon = '';
 var date = '';
 var time = '';
+var currentInfo = '';
 
 
 // settings
@@ -56,18 +57,26 @@ app.post('/timestamp',async(req,res)=>{
     connection.query(`SELECT * FROM taxiflow.location
             WHERE latitude BETWEEN '${lati.toFixed(4)}' AND '${latf.toFixed(4)}' AND longitude BETWEEN '${loni.toFixed(4)}' AND '${lonf.toFixed(4)}'`, function(error, rows){
         if(error){
+            console.log("hi")
             throw error;
         }else{ 
             var timestamp = [];
+            var infoTimeAndPos = [];
+            var location = [];
             for (i in rows) {
                 timestamp.push(rows[i].timestamp);
+                location.push([rows[i].latitude, rows[i].longitude]);
+                infoTimeAndPos.push([rows[i].latitude,rows[i].longitude,rows[i].timestamp]);
             }
         };   
         res.json(
             {
+                infoTimeAndPos: infoTimeAndPos,
+                location: location,
                 dates: timestamp,
             }
-        );           
+        );     
+
     });
     
 })
@@ -76,18 +85,18 @@ app.post('/dates',async(req,res)=>{
     dates = req.body
     var start = dates[0]+' '+dates[1]
     var end = dates[3]+' '+dates[2]
-    connection.query(`SELECT * FROM taxiflow.location
-            WHERE timestamp >= '${start.toString()}' AND timestamp <= '${end.toString()}'`, function(error, rows){
+    connection.query(`SELECT * FROM taxiflow.location as l
+                    INNER JOIN taxiflow.taxi as t ON l.idtaxi = t.idtaxi
+                    WHERE timestamp >= '${start.toString()}' AND timestamp <= '${end.toString()}'
+                    AND t.license_plate = '${dates[4].toString()}'`, function(error, rows){
         if(error){
             throw error;
         }else{ 
             var lattlngs = [];
             for (i in rows) {
                 lattlngs.push([rows[i].latitude,rows[i].longitude]);
+                
             }
-            console.log(lattlngs)
-            console.log(rows[0])
-            console.log(rows[rows.length - 1])
 
         };   
         res.json(
@@ -98,30 +107,41 @@ app.post('/dates',async(req,res)=>{
     });
 });
 
-app.get('/gps', async(req, res)=>{
-    await connection.query(`SELECT * FROM taxiflow.location ORDER BY idlocation DESC`, function(error, rows){
-        if(error){
+app.get('/cinfo', async(req, res)=>{
+   connection.query(`SELECT l.latitude, l.longitude, l.date, l.time, t.license_plate, d.name
+                            FROM taxiflow.location as l
+                            INNER JOIN taxiflow.taxi as t ON l.idtaxi = t.idtaxi
+                            INNER JOIN taxiflow.driver as d ON d.id_driver = t.id_driver
+                            GROUP BY l.idtaxi
+                            ORDER BY l.idlocation DESC;`, function (error, rows) {
+        if (error) {
             throw error;
-        }else{
-                location = rows[0]
-                lat = location.latitude;
-                lon = location.longitude;
-                date = location.date;
-                time = location.time;
+        } else {
+            currentInfo = rows;
+            vectorP = [];
+            location = rows[0]
+            lat = location.latitude;
+            lon = location.longitude;
+            date = location.date;
+            time = location.time;
+
+
         };
-        
+
     });
+
     res.json(
         {
+
             lat: lat,
             lon: lon,
             date: date,
-            time: time
+            time: time,
+            currentInfo: currentInfo,
         }
     );
 })
-
-
+ 
 // Port listening
 app.listen(app.get('port'), () =>{
     console.log('Server on port', port);     
