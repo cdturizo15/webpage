@@ -167,7 +167,7 @@ input:checked + .slider:before {
   margin: auto;
   margin-top: 20px;
   margin-bottom: 20px;
-  height: 90vh;
+  height: 80vh;
   background: gray;
   display: list-item;
 }
@@ -185,7 +185,7 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) and (min-width:500px) {
   .logo {
     font-size: 25px;
     padding: 0 20px;
@@ -231,7 +231,7 @@ input:checked + .slider:before {
 
 @media (max-width: 500px) {
   #map-template {
-    height: 85vh;
+    height: 70vh;
   }
   .text-muted {
     display: none !important;
