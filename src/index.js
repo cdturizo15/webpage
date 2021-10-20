@@ -4,12 +4,12 @@ const mysql = require('mysql');
 const child_p = require('child_process')
 const {promisify} = require('util');
 require('dotenv').config()
-const port = 80
+const port = 8080
 const connection = mysql.createConnection({
-    host: 'taxiflowdatabase.c0u6vxuknyg3.us-west-2.rds.amazonaws.com', // HOST NAME
+    host: process.env.HOST, // HOST NAME
     user: 'taxiflow', // USER NAME
     database: 'taxiflow', // DATABASE NAME
-    password: 'David5597' // DATABASE PASSWORD
+    password: process.env.PASS // DATABASE PASSWORD
 });
 var lat = '';
 var lon = '';

@@ -7,19 +7,18 @@ var sw = 0
 var button = document.getElementById('zoom');
 var latlngs = [];
 var polyline = null
+var markers =  L.markerClusterGroup();
 
 
 async function getCurrentInfo() {
   response = await fetch('http://'+fetchurl+'/cinfo');
   coordinates = await response.json();
   currentInfo = coordinates.currentInfo
-  //console.log(currentInfo)
-  if (marker) {
+  
+  if(markers){
     markers.clearLayers();
-  }  
-  currentInfo.forEach(function (info){
-    
-
+  }
+  currentInfo.forEach(function (info){  
     marker = L.marker([info.latitude, info.longitude])
     
     var popup = L.popup()
@@ -31,34 +30,10 @@ async function getCurrentInfo() {
     }  
     polyline = L.polyline(latlngs, {color: 'blue',smoothFactor:0.5})
     //map.addLayer(polyline)
-    map.addLayer(marker)
+    markers.addLayer(marker);
+    
   })  
-}
-async function getGPS() {
-  console.log('ok')
- 
-  /*
-  document.getElementById("lat").textContent = coordinates.lat;
-  document.getElementById("lon").textContent = coordinates.lon;
-  document.getElementById("date").textContent = coordinates.date;
-  document.getElementById("time").textContent = coordinates.time;
-  if (marker) {
-    map.removeLayer(marker)
-  }
-  if(polyline){
-    map.removeLayer(polyline)
-  }
-  /* button.addEventListener('click', function () {
-    map.setView([coordinates.lat, coordinates.lon], 17)
-  }); */
-  marker = L.marker([coordinates.lat, coordinates.lon]).bindPopup('Myposition')
-  if(coordinates.lat != ""){
-    latlngs.push([coordinates.lat,coordinates.lon])
-  }  
-  polyline = L.polyline(latlngs, {color: 'red',smoothFactor:0.5})
-  map.addLayer(polyline)
-  map.addLayer(marker)
-  
+  map.addLayer(markers);
 }
 
 const loopFunction = () => {
