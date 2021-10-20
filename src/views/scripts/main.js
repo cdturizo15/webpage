@@ -23,16 +23,15 @@ async function getGPS() {
   if(polyline){
     map.removeLayer(polyline)
   }
-  button.addEventListener('click', function () {
+  /* button.addEventListener('click', function () {
     map.setView([coordinates.lat, coordinates.lon], 17)
-  });
+  }); */
   marker = L.marker([coordinates.lat, coordinates.lon]).bindPopup('Myposition')
   if(coordinates.lat != ""){
     latlngs.push([coordinates.lat,coordinates.lon])
   }  
-  polyline = L.polyline(latlngs, {color: 'red',smoothFactor:0.5})
-  map.addLayer(polyline)
-  map.addLayer(marker)
+  polyline = L.polyline(latlngs, {color: 'red',smoothFactor:0.5}).addTo(map)
+  marker.addTo(map)
 }
 
 setInterval(getGPS, 2000);
