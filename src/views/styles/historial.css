@@ -99,7 +99,7 @@ p{
   height: 100px;
   overflow-y: scroll;
   width: 90%;
-  padding: 1%;
+  padding: 5%;
 }
 @media (max-width: 768px) {
   .fecha {
