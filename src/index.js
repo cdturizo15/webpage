@@ -108,12 +108,16 @@ app.post('/dates',async(req,res)=>{
 });
 
 app.get('/cinfo', async(req, res)=>{
-   connection.query(`SELECT l.latitude, l.longitude, l.date, l.time, t.license_plate, d.name
-                            FROM taxiflow.location as l
-                            INNER JOIN taxiflow.taxi as t ON l.idtaxi = t.idtaxi
-                            INNER JOIN taxiflow.driver as d ON d.id_driver = t.id_driver
-                            GROUP BY l.idtaxi
-                            ORDER BY l.idlocation DESC;`, function (error, rows) {
+   connection.query(`WITH UNO AS (
+                    SELECT  l.idtaxi, MAX(l.idlocation) AS maxfecha
+                    FROM taxiflow.location as l
+                    GROUP BY idtaxi
+                    )
+                    SELECT l.*, d.name, t.license_plate
+                    FROM taxiflow.location AS l
+                    INNER JOIN UNO AS q ON l.idtaxi = q.idtaxi AND l.idlocation = maxfecha
+                    LEFT JOIN taxiflow.taxi AS t ON l.idtaxi  = t.idtaxi
+                    LEFT JOIN taxiflow.driver AS d ON d.id_driver  = t.id_driver`, function (error, rows) {
         if (error) {
             throw error;
         } else {
