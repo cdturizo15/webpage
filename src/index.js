@@ -7,7 +7,7 @@ require('dotenv').config()
 const port = 8080
 const connection = mysql.createConnection({
     host: process.env.HOST, // HOST NAME
-    user: 'taxiflow', // USER NAME
+    user: process.env.USER, // USER NAME
     database: 'taxiflow', // DATABASE NAME
     password: process.env.PASS // DATABASE PASSWORD
 });
