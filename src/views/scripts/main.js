@@ -7,7 +7,12 @@ var sw = 0
 var button = document.getElementById('zoom');
 var latlngs = [];
 var polyline = null
-var markers =  L.markerClusterGroup();
+
+var markers = L.markerClusterGroup({
+	spiderfyOnMaxZoom: true,
+	showCoverageOnHover: false,
+	zoomToBoundsOnClick: false
+});
 
 
 async function getCurrentInfo() {
