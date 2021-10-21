@@ -93,13 +93,13 @@ p{
   border-style: hidden;
   border-color: #1F4CA4;
   border-radius: 28px;
-  padding: 5%;
+  padding: 1%;
 }
 #allDataDiv{
   height: 100px;
   overflow-y: scroll;
   width: 90%;
-  padding: 5%;
+  padding: 1%;
 }
 @media (max-width: 768px) {
   .fecha {
