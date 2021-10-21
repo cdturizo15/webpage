@@ -96,10 +96,10 @@ p{
   padding: 1%;
 }
 #allDataDiv{
-  height: 50px;
+  height: 60px;
   overflow-y: scroll;
   width: 90%;
-  padding: 0.5% 5%;
+  padding: 0 5%;
 }
 @media (max-width: 768px) {
   .fecha {
