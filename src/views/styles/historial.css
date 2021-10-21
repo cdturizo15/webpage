@@ -101,11 +101,17 @@ p{
   width: 90%;
   padding: 0 5%;
 }
+.licence-plate-div{
+  padding: 0px 7px;
+}
 @media (max-width: 768px) {
   .fecha {
     display: block;
     align-items: center;
     justify-content: center;
+  }
+  .licence-plate-div{
+    padding: 7px;
   }
   #button-trace {
     background-color: #f1666e;
