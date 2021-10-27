@@ -62,14 +62,12 @@ map.on('popupopen', async function () {
         },
         body: JSON.stringify(coordinates)
     }
-    console.log(coordinates)
+    //console.log(coordinates)
     const response = await fetch('/timestamp', options);
     const dates = await response.json();
-    await popup.setContent('Pase por aqui: ' + dates.dates.length + ' veces.\n' + 'Ultima vez: ' + dates.dates[dates.dates.length - 1], { maxWidth: "2px" });
+    await popup.setContent('Pase por aqui: ' + dates.length + ' veces.\n' + 'Ultima vez: ' + dates[dates.length - 1], { maxWidth: "2px" });
 
-    console.log(dates.location)
-    console.log(dates.location.length)
-    infoTimePos = dates.infoTimeAndPos;
+    infoTimePos = dates;
     document.getElementById("allDataDiv").innerHTML = "";
     infoTimePos.forEach(function (onelatlngs) {
         let tag = document.createElement("p");

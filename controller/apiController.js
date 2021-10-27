@@ -13,19 +13,14 @@ const timestamp = async (req, res) => {
         const response = await pool.query(`SELECT * FROM taxiflow.location
             WHERE latitude BETWEEN '${lati.toFixed(4)}' AND '${latf.toFixed(4)}' 
             AND longitude BETWEEN '${loni.toFixed(4)}' AND '${lonf.toFixed(4)}'`);
-        answ = response[0];
-
-        var timestamp = [];
+        console.log(response)
         var infoTimeAndPos = [];
-        var location = [];
-        for (i in rows) {
-            timestamp.push(rows[i].timestamp);
-            location.push([rows[i].latitude, rows[i].longitude]);
-            infoTimeAndPos.push([rows[i].latitude, rows[i].longitude, rows[i].timestamp]);
+        for (i in response) {
+            infoTimeAndPos.push([response[i].latitude, response[i].longitude, response[i].timestamp]);
         }
-
-        res.json(response);
-        //console.log(response)
+        console.log(infoTimeAndPos)
+        res.json(
+            infoTimeAndPos)
     } catch (e) {
         console.error(e);
     }
