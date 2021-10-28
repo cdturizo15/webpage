@@ -9,6 +9,20 @@ let polyline = null
 var button = document.getElementById('button-trace');
 var button1 = document.getElementById('zoom');
 var licenses = [];
+var polylines = [];
+
+var markersi = L.markerClusterGroup({
+	spiderfyOnMaxZoom: true,
+	showCoverageOnHover: false,
+	zoomToBoundsOnClick: false
+});
+
+var markersf = L.markerClusterGroup({
+	spiderfyOnMaxZoom: true,
+	showCoverageOnHover: false,
+	zoomToBoundsOnClick: false
+});
+
 function correctFormatWithoutT(letra) {
     var formatTime = 0;
     var dateTime = "";
@@ -30,25 +44,6 @@ function correctFormatWithoutT(letra) {
     return dateTime;
 }
 
-function correctFormatWithT(letra2) {
-    var formatTime2 = 0;
-    var dateTime2 = "";
-    for (i = 0; i < letra2.length; i++) {
-
-        if (formatTime2 == 2) {
-            i = letra2.length - 1
-        }
-        if (letra2.charAt(i) == ":") {
-            formatTime2 = formatTime2 + 1;
-            dateTime2 += letra2.charAt(i);
-        } else {
-            dateTime2 += letra2.charAt(i);
-        }
-
-
-    }
-    return dateTime2;
-}
 
 map.on('popupopen', async function () {
 
@@ -110,12 +105,14 @@ async function getHistory() {
             text: 'La fecha inicial es mayor a la fecha final, por favor corrija las fechas. '
         })
 
-        if (polyline) {
-            map.removeLayer(polyline)
+        if (polylines) {
+            polylines.forEach(function (item) {
+                map.removeLayer(item)
+            });
         }
-        if (markeri) {
-            map.removeLayer(markeri)
-            map.removeLayer(markerf)
+        if (markersi) {
+            markersi.clearLayers();
+            markersf.clearLayers();
         }
 
     } else {
@@ -139,22 +136,26 @@ async function getHistory() {
             })
         }
         else {
-            if (polyline) {
-                map.removeLayer(polyline)
+            if (polylines) {
+                polylines.forEach(function (item) {
+                    map.removeLayer(item)
+                });
             }
-            if (markeri) {
-                map.removeLayer(markeri)
-                map.removeLayer(markerf)
+            if (markersi) {
+                markersi.clearLayers();
+                markersf.clearLayers();
             }
             licenses= Object.keys(latlngs)
             licenses.forEach(e => {console.log(latlngs[e]['Location'][0])
                 markeri = L.marker(latlngs[e]['Location'][0]).bindPopup('Placa: ' + e +'<br/>' + 'Initial position: ' + latlngs[e]['Location'][0])
                 markerf = L.marker(latlngs[e]['Location'][latlngs[e]['Location'].length - 1]).bindPopup('Placa: ' + e +'<br/>' + 'Final position: ' + latlngs[e]['Location'][latlngs[e]['Location'].length - 1])
                 polyline = L.polyline(latlngs[e]['Location'], { color: latlngs[e]['Color'], smoothFactor: 0.5 }).bindPopup()
-
-                map.addLayer(polyline)
-                map.addLayer(markeri)
-                map.addLayer(markerf)
+                polylines.push(polyline);
+                polyline.addTo(map)
+                markersi.addLayer(markeri);
+                markersf.addLayer(markerf);
+                map.addLayer(markersi);
+                map.addLayer(markersf);
             });
         }
     }
