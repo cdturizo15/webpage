@@ -23,6 +23,9 @@ async function getCurrentInfo() {
   if(markers){
     markers.clearLayers();
   }
+
+  document.getElementById("currentInfo").innerHTML = "";
+
   currentInfo.forEach(function (info){  
     marker = L.marker([info.latitude, info.longitude])
     
@@ -36,6 +39,20 @@ async function getCurrentInfo() {
     polyline = L.polyline(latlngs, {color: 'blue',smoothFactor:0.5})
     //map.addLayer(polyline)
     markers.addLayer(marker);
+
+    let tag = document.createElement("p");
+    let text = document.createTextNode("Placa: " + info.license_plate);
+    tag.appendChild(text);
+    let tag2 = document.createElement("br");
+    tag.appendChild(tag2);
+    text = document.createTextNode("Ubicación: " + info.latitude + " , " + info.longitude);
+    tag.appendChild(text);
+    let tag3 = document.createElement("br");
+    tag.appendChild(tag3);
+    text = document.createTextNode("RPM: " + info.rpm);
+    tag.appendChild(text);
+    var element = document.getElementById("currentInfo");
+    element.appendChild(tag);
     
   })  
   map.addLayer(markers);
