@@ -9,7 +9,7 @@ const connection = mysql.createConnection({
     host: process.env.HOST, // HOST NAME
     user: process.env.USER, // USER NAME
     database: 'taxiflow', // DATABASE NAME
-    password: process.env.PASS // DATABASE PASSWORD
+    password: process.env.PASS  // DATABASE PASSWORD
 });
 
 connection.connect(function(error){
@@ -33,19 +33,24 @@ socket.on('message',(message)=>{
 
     const lat = infoMsg[1];
     const lon = infoMsg[2];
-    const date = infoMsg[3];
-    const time = infoMsg[3];
-    const timestamp = infoMsg[3];
+    const milliseconds = parseInt(infoMsg[3]);
+    const dateObject = new Date(milliseconds);
+    const strDate = dateObject.toISOString();
+    const date = strDate.substr(0,10);
+    const time = strDate.substr(11,8);
+    const timestamp = date + ' ' +time;
     const license_plate = infoMsg[4];
     const rpm = infoMsg[5];
+
+    console.log(strDate);
+
     console.log(lat);
     console.log(lon);
     console.log(date);
     console.log(time);
-    console.log(license_plate);
     console.log(timestamp);
+    console.log(license_plate);
     console.log(rpm);
-
 
 
     connection.query(`SELECT license_plate, idtaxi FROM taxiflow.taxi
