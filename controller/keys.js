@@ -1,8 +1,8 @@
 module.exports = {
     database: {
-        host: 'database-taxiflow.c3snnsd75urd.us-west-2.rds.amazonaws.com', // HOST NAME
-        user: 'taxiflow', // USER NAME
+        host: process.env.HOST, // HOST NAME
+        user: process.env.USER, // USER NAME
         database: 'taxiflow', // DATABASE NAME
-        password: 'taxiflow' // DATABASE PASSWORD
+        password: process.env.PASS  // DATABASE PASSWORD
     }
 }
