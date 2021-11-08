@@ -57,5 +57,4 @@ async function getCurrentInfo() {
   })  
   map.addLayer(markers);
 }
-
 setInterval(getCurrentInfo, 2000);

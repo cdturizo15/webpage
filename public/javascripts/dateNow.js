@@ -9,7 +9,7 @@ function mostrar_fecha(){
     document.getElementById("datetime-1").value = dateNowInit;
     document.getElementById("datetime-2").value = dateNowFinal;
     
-    
+    console.log('fecha ok'+dateNowInit+dateNowFinal)
     return ([dateNowInit,dateNowFinal])
 }
 

@@ -6,10 +6,10 @@ const mysql = require('mysql');
 require('dotenv').config()
 
 const connection = mysql.createConnection({
-    host: process.env.HOST, // HOST NAME
-    user: process.env.USER, // USER NAME
+    host: 'database-taxiflow.c3snnsd75urd.us-west-2.rds.amazonaws.com', // HOST NAME
+    user: 'taxiflow', // USER NAME
     database: 'taxiflow', // DATABASE NAME
-    password: process.env.PASS  // DATABASE PASSWORD
+    password: 'taxiflow'  // DATABASE PASSWORD
 });
 
 connection.connect(function(error){

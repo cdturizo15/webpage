@@ -3,6 +3,7 @@ const { database } = require('./keys');
 
 const timestamp = async (req, res) => {
     coordinates = req.body
+    console.log(coordinates);
     let lat = coordinates[1]
     let lon = coordinates[0]
     let lati = parseFloat(lat) - 0.0004
@@ -10,9 +11,11 @@ const timestamp = async (req, res) => {
     let loni = parseFloat(lon) + 0.0004
     let lonf = parseFloat(lon) - 0.0004
     try {
-        const response = await pool.query(`SELECT * FROM taxiflow.location
+        const response = await pool.query(`SELECT * FROM taxiflow.location as l
+            INNER JOIN taxiflow.taxi as t ON l.idtaxi = t.idtaxi
             WHERE latitude BETWEEN '${lati.toFixed(4)}' AND '${latf.toFixed(4)}' 
-            AND longitude BETWEEN '${loni.toFixed(4)}' AND '${lonf.toFixed(4)}'`);
+            AND longitude BETWEEN '${loni.toFixed(4)}' AND '${lonf.toFixed(4)}'
+            AND t.license_plate = '${coordinates[2]}'`);
         console.log(response)
         var infoTimeAndPos = [];
         for (i in response) {
@@ -32,7 +35,7 @@ const gpsDates = async (req, res) => {
     var end = dates[2];
     var lattlngs = {};
     try {
-        if (dates[2] == '-') {
+        if (dates[2] == 'TODO') {
             const response = await pool.query(`SELECT * FROM taxiflow.location as l
             INNER JOIN taxiflow.taxi as t ON l.idtaxi = t.idtaxi
             WHERE timestamp >= "${dates[0]}" AND timestamp <= "${dates[1]}"`);

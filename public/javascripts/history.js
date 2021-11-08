@@ -11,6 +11,8 @@ var button1 = document.getElementById('zoom');
 var licenses = [];
 var polylines = [];
 
+
+
 var markersi = L.markerClusterGroup({
 	spiderfyOnMaxZoom: true,
 	showCoverageOnHover: false,
@@ -46,9 +48,11 @@ function correctFormatWithoutT(letra) {
 
 
 map.on('popupopen', async function () {
+    licence = document.getElementById("licence-id");
+    license = licence.options[licence.selectedIndex].text;
 
     var popup = polyline.getPopup();
-    coordinates = [popup.getLatLng().lng.toFixed(4), popup.getLatLng().lat.toFixed(4)]
+    coordinates = [popup.getLatLng().lng.toFixed(4), popup.getLatLng().lat.toFixed(4),license]
     
     const options = {
         method: 'POST',
@@ -76,6 +80,7 @@ map.on('popupopen', async function () {
         element.appendChild(tag);
     })
 });
+
 
 async function getHistory() {
 
@@ -145,7 +150,9 @@ async function getHistory() {
                 markersi.clearLayers();
                 markersf.clearLayers();
             }
-            licenses= Object.keys(latlngs)
+            
+
+            licenses = Object.keys(latlngs)
             licenses.forEach(e => {console.log(latlngs[e]['Location'][0])
                 markeri = L.marker(latlngs[e]['Location'][0]).bindPopup('Placa: ' + e +'<br/>' + 'Initial position: ' + latlngs[e]['Location'][0])
                 markerf = L.marker(latlngs[e]['Location'][latlngs[e]['Location'].length - 1]).bindPopup('Placa: ' + e +'<br/>' + 'Final position: ' + latlngs[e]['Location'][latlngs[e]['Location'].length - 1])
@@ -157,6 +164,11 @@ async function getHistory() {
                 map.addLayer(markersi);
                 map.addLayer(markersf);
             });
+
+            document.getElementById("range").innerHTML = "";
+            if (document.getElementById("licence-id").value != 0){
+                getSliders();
+            }
         }
     }
 }
@@ -165,6 +177,28 @@ async function getL() {
     response = await fetch('http://' + fetchurl + '/live');
     coordinates = await response.json();
     currentInfo = coordinates.currentInfo
+
+    var fecha = new Date();
+    var month = String(fecha.getUTCMonth()+1);
+    var day = String(fecha.getUTCDate());
+    var year = fecha.getFullYear();
+    if (day.length == 1){
+        day = 0+day
+    }
+    if (month.length == 1){
+        month = 0+month
+    }
+    dateNowFinal = year+"-"+month+"-"+day+"T"+"23:59" ;
+    
+    month = String(month-2)
+    if (month.length == 1){
+        month = 0+month
+    }
+    dateNowInit = year+"-"+month+"-"+day+"T"+"00:00" ;
+    
+    document.getElementById("datetime-1").value = dateNowInit;
+    document.getElementById("datetime-2").value = dateNowFinal;
+    
 
     currentInfo.forEach(function (info) {
         licenses[licenses.length] = info.license_plate;
@@ -175,7 +209,7 @@ async function getL() {
     var i = 0;
     let tag = document.createElement("option");
     tag.value = i;
-    let text = document.createTextNode("-");
+    let text = document.createTextNode("TODO");
     tag.appendChild(text);
     var element = document.getElementById("licence-id");
     element.appendChild(tag);
@@ -189,14 +223,28 @@ async function getL() {
 
         element = document.getElementById("licence-id");
         element.appendChild(tag);
+        getHistory();
     })
+
+}
+
+async function getSliders() {
+    tag = document.createElement("p");
+    text = document.createTextNode('0 -');
+    tag.appendChild(text);
+
+    element = document.getElementById("range");
+    element.appendChild(tag);
+
+    console.log("getSliders");
 }
 
 button.addEventListener('click', function () {
     getHistory();
 });
+
 button1.addEventListener('click', function () {
-    //map.setView(latlngs[0], 17)
+    map.setView([10.9583295,-74.791163502], 12);
 });
 
 getL();

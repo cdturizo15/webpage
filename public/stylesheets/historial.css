@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
 .bottom-nav {
   position: fixed; /* maybe sticky is better if part of overall page layout? */
   bottom: 100vh; /* fallback? */
@@ -101,6 +109,10 @@
   border-radius: 28px;
   padding: 1%;
 }
+
+
+
+
 @media (max-width: 768px) {
   .fecha {
     display: block;

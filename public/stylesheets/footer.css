@@ -21,7 +21,7 @@ footer .container {
 footer .container .sec {
   margin-right: 30px;
   margin-left: 30px;
-  font-size: 20px;
+  font-size: 12px;
 }
 footer .container .sec.aboutus {
   width: 50%;
@@ -70,7 +70,7 @@ footer p {
 }
 .sci li a .fa {
   color: #fff;
-  font-size: 20px;
+  font-size: 12px;
 }
 .contact {
   width: calc(50%-30px);

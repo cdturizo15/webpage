@@ -78,6 +78,11 @@ h3 {
   background-color: white;
   color: #ff5b63;
 }
+.nav-menu-link:active {
+  background-color: whitesmoke;
+  color: #ff5b63;
+}
+
 .nav-toggle {
   color: white;
   background: none;
@@ -183,12 +188,14 @@ input:checked + .slider:before {
   }
   .nav-menu-link {
     color: #4056f4;
+    opacity: 0.5;
   }
   .nav-toggle {
     display: block;
   }
   .nav-menu_visible {
     left: 0;
+    background: lightskyblue;
   }
   .nav-toggle:focus:not(:focus-visible) {
     outline: none;
