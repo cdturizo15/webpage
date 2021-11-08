@@ -8,7 +8,6 @@ var logger = require('morgan');
 require('dotenv').config()
 const port = 8080
 
-
 require('./database/accedeDB.js')
 
 //Middlweawares

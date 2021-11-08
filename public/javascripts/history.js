@@ -6,8 +6,13 @@ let markeri = null
 let markerf = null
 let popupMarker = null
 let polyline = null
+/*
 var button = document.getElementById('button-trace');
+*/
 var button1 = document.getElementById('zoom');
+var droplicence = document.getElementById('licence-id');
+var dateInit = document.getElementById("datetime-1");
+var dateFinal = document.getElementById("datetime-2");
 var licenses = [];
 var polylines = [];
 
@@ -238,14 +243,23 @@ async function getSliders() {
 
     console.log("getSliders");
 }
-
+/*
 button.addEventListener('click', function () {
     getHistory();
 });
-
+*/
 button1.addEventListener('click', function () {
     map.setView([10.9583295,-74.791163502], 12);
 });
 
+droplicence.addEventListener("change", function () {
+    getHistory();
+});
+dateInit.addEventListener("change", function () {
+    getHistory();
+});
+dateFinal.addEventListener("change", function () {
+    getHistory();
+});
 getL();
 
