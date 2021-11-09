@@ -191,7 +191,7 @@ async function getHistory() {
             document.getElementById("sliderValue").innerHTML = "";
             document.getElementById("value left").innerHTML = "";
             document.getElementById("value right").innerHTML = "";
-            document.getElementById("range").type = "hidden";
+            document.getElementById("sliderInfo").type = "hidden";
             document.getElementById("sliderInfo").innerHTML = "";
             if (document.getElementById("licence-id").value != 0){
                 //document.getElementById("sliderintput").remove();
