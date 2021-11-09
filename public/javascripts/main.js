@@ -25,9 +25,14 @@ async function getCurrentInfo() {
   }
 
   document.getElementById("currentInfo").innerHTML = "";
+  var taxiIcon = L.icon({
+    iconUrl: '/images/taxiicon.png',
+    iconSize:     [20, 17], // size of the icon
+    //iconAnchor:   [18, 15], // point of the icon which will correspond to marker's location
+});
 
   currentInfo.forEach(function (info){  
-    marker = L.marker([info.latitude, info.longitude])
+    marker = L.marker([info.latitude, info.longitude],{icon: taxiIcon})
     
     var popup = L.popup()
     .setContent(info.name+". "+"Placa: "+info.license_plate+"</br>"+"Last position: "+info.latitude+", "+info.longitude);

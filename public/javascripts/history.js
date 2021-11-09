@@ -4,6 +4,7 @@ var fetchurl = location.hostname;
 L.tileLayer(tileURL).addTo(map)
 let markeri = null
 let markerf = null
+let markersli = null
 let popupMarker = null
 let polyline = null
 /*
@@ -13,9 +14,12 @@ var button1 = document.getElementById('zoom');
 var droplicence = document.getElementById('licence-id');
 var dateInit = document.getElementById("datetime-1");
 var dateFinal = document.getElementById("datetime-2");
+ slideValue = document.querySelector("span");
+ inputSlider = document.getElementById("sliderinput");
 var licenses = [];
 var polylines = [];
 
+let ifslider = '0';
 
 
 var markersi = L.markerClusterGroup({
@@ -25,6 +29,12 @@ var markersi = L.markerClusterGroup({
 });
 
 var markersf = L.markerClusterGroup({
+	spiderfyOnMaxZoom: true,
+	showCoverageOnHover: false,
+	zoomToBoundsOnClick: false
+});
+
+var markerss = L.markerClusterGroup({
 	spiderfyOnMaxZoom: true,
 	showCoverageOnHover: false,
 	zoomToBoundsOnClick: false
@@ -69,10 +79,11 @@ map.on('popupopen', async function () {
     //console.log(coordinates)
     const response = await fetch('/timestamp', options);
     const dates = await response.json();
-    await popup.setContent('Pase por aqui: ' + dates.length + ' veces.\n' + 'Ultima vez: ' + dates[dates.length - 1], { maxWidth: "2px" });
+    await popup.setContent(dates[dates.length - 1][3]+ '</br>' +'# de veces que pasó por aquí: ' + dates.length + '</br>' + 'Ultima vez: ' + dates[dates.length - 1][2], { maxWidth: "2px" });
 
     infoTimePos = dates;
     document.getElementById("allDataDiv").innerHTML = "";
+     /*
     infoTimePos.forEach(function (onelatlngs) {
         let tag = document.createElement("p");
         let text = document.createTextNode("Fecha y hora: " + onelatlngs[2]);
@@ -84,11 +95,11 @@ map.on('popupopen', async function () {
         var element = document.getElementById("allDataDiv");
         element.appendChild(tag);
     })
+    */
 });
 
 
 async function getHistory() {
-
     licence = document.getElementById("licence-id");
     license = licence.options[licence.selectedIndex].text;
 
@@ -158,20 +169,32 @@ async function getHistory() {
             
 
             licenses = Object.keys(latlngs)
+            if (licenses.length ==1){
+                ifslider = latlngs[licenses]['Location'].length;
+            }
+            //console.log(latlngs);
             licenses.forEach(e => {console.log(latlngs[e]['Location'][0])
-                markeri = L.marker(latlngs[e]['Location'][0]).bindPopup('Placa: ' + e +'<br/>' + 'Initial position: ' + latlngs[e]['Location'][0])
-                markerf = L.marker(latlngs[e]['Location'][latlngs[e]['Location'].length - 1]).bindPopup('Placa: ' + e +'<br/>' + 'Final position: ' + latlngs[e]['Location'][latlngs[e]['Location'].length - 1])
+                markeri = L.marker(latlngs[e]['Location'][0]).bindPopup('Placa: ' + e +'<br/>' + 'Posición inicial: ' + latlngs[e]['Location'][0])
+                markerf = L.marker(latlngs[e]['Location'][latlngs[e]['Location'].length - 1]).bindPopup('Placa: ' + e +'<br/>' + 'Posición final: ' + latlngs[e]['Location'][latlngs[e]['Location'].length - 1])
                 polyline = L.polyline(latlngs[e]['Location'], { color: latlngs[e]['Color'], smoothFactor: 0.5 }).bindPopup()
                 polylines.push(polyline);
                 polyline.addTo(map)
                 markersi.addLayer(markeri);
-                markersf.addLayer(markerf);
                 map.addLayer(markersi);
+                markersf.addLayer(markerf);
                 map.addLayer(markersf);
+                //console.log(latlngs[e])
+                vectorPoly = latlngs[e]['Location'];
+                vectorDate = latlngs[e]['Date'];
             });
 
-            document.getElementById("range").innerHTML = "";
+            document.getElementById("sliderValue").innerHTML = "";
+            document.getElementById("value left").innerHTML = "";
+            document.getElementById("value right").innerHTML = "";
+            document.getElementById("range").type = "hidden";
+            document.getElementById("sliderInfo").innerHTML = "";
             if (document.getElementById("licence-id").value != 0){
+                //document.getElementById("sliderintput").remove();
                 getSliders();
             }
         }
@@ -233,16 +256,47 @@ async function getL() {
 
 }
 
-async function getSliders() {
-    tag = document.createElement("p");
-    text = document.createTextNode('0 -');
-    tag.appendChild(text);
+function getSliders() {
+    slideValue = document.createElement("span");
+    slideValue.textContent = 1;
+    element = document.getElementById("sliderValue");
+    element.appendChild(slideValue);
 
-    element = document.getElementById("range");
-    element.appendChild(tag);
+    valueLeft = document.getElementById("value left");
+    valueLeft.innerText = 1;
 
-    console.log("getSliders");
+    valueRight = document.getElementById("value right");
+    valueRight.innerText = ifslider;
+
+    sliderInput = document.getElementById("sliderinput");
+    sliderInput.max = ifslider;
+    sliderInput.type = "range";
+    /*
+
+    if (document.getElementById("sliderinput") == null) {
+        tag = document.createElement("input");
+        tag.type = "range";
+        tag.min = 1;
+        tag.max = ifslider;
+        tag.id = "sliderinput";
+        tag.setAttribute("value", "1");
+        tag.setAttribute("steps", "1");
+        element = document.getElementById("field slider");
+        element.insertBefore(tag, element.childNodes[2]);
+    }else{
+        sliderInput = document.getElementById("sliderinput");
+        sliderInput.max = ifslider;
+    }
+    */
+   
+        
+    document.getElementsByTagName("head")[0].insertAdjacentHTML(
+        "beforeend",
+        "<link rel=\"stylesheet\" href=\"/stylesheets/slider.css\" />");
+
+    console.log(ifslider);
 }
+
 /*
 button.addEventListener('click', function () {
     getHistory();
@@ -261,5 +315,49 @@ dateInit.addEventListener("change", function () {
 dateFinal.addEventListener("change", function () {
     getHistory();
 });
+
 getL();
+
+function funSlider() {
+    value = inputSlider.value;
+    slideValue.textContent = value;
+    slideValue.style.left = (value/ifslider*100) + "%";
+    slideValue.classList.add("show");
+    //console.log(value)
+    //console.log(slideValue)
+    let tag = document.createElement("p");
+    text = document.createTextNode(vectorDate[value-1] + " - " + vectorPoly[value-1]);
+    tag.appendChild(text);
+    var element = document.getElementById("sliderInfo");
+    element.appendChild(tag); 
+
+    var taxiIcon = L.icon({
+        iconUrl: '/images/taxiicon.png',
+        //shadowUrl: 'leaf-shadow.png',
+    
+        iconSize:     [20, 17], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [18, 15], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        //popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
+    /*
+    L.marker([vectorPoly[value-1]], {icon: taxiIcon}).addTo(map);
+    */
+
+    markersli = L.marker(vectorPoly[value-1], {icon: taxiIcon, draggable: 'false'}, )
+    map.addLayer(markersli);
+};
+
+inputSlider.oninput = (()=>{
+    document.getElementById("sliderInfo").innerHTML = "";
+    if(markersli){
+        map.removeLayer(markersli);
+    }
+    funSlider();
+});
+
+inputSlider.onblur = (()=>{
+    slideValue.classList.remove("show");
+});
 

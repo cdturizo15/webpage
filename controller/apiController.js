@@ -11,7 +11,7 @@ const timestamp = async (req, res) => {
     let loni = parseFloat(lon) + 0.0004
     let lonf = parseFloat(lon) - 0.0004
     try {
-        const response = await pool.query(`SELECT * FROM taxiflow.location as l
+        const response = await pool.query(`SELECT l.*, t.* FROM taxiflow.location as l
             INNER JOIN taxiflow.taxi as t ON l.idtaxi = t.idtaxi
             WHERE latitude BETWEEN '${lati.toFixed(4)}' AND '${latf.toFixed(4)}' 
             AND longitude BETWEEN '${loni.toFixed(4)}' AND '${lonf.toFixed(4)}'
@@ -19,7 +19,7 @@ const timestamp = async (req, res) => {
         console.log(response)
         var infoTimeAndPos = [];
         for (i in response) {
-            infoTimeAndPos.push([response[i].latitude, response[i].longitude, response[i].timestamp]);
+            infoTimeAndPos.push([response[i].latitude, response[i].longitude, response[i].timestamp, response[i].license_plate]);
         }
         console.log(infoTimeAndPos)
         res.json(
@@ -49,15 +49,18 @@ const gpsDates = async (req, res) => {
             uniqueL.forEach(e => {
                 var l = [];
                 var c;
+                var d = [];
                 for (i in response) {
                     if (response[i].license_plate == e){
                         l.push([response[i].latitude,response[i].longitude])
-                        c = response[i].color
+                        c = response[i].color;
+                        d.push(response[i].timestamp);
                     };                
                 }
                 lattlngs[e] = {
                     'Location':l,
-                    'Color':c}
+                    'Color':c,
+                    'Date':d}
                     
                 console.log(lattlngs[e])
             });
@@ -77,15 +80,18 @@ const gpsDates = async (req, res) => {
             uniqueL.forEach(e => {
                 var l = [];
                 var c;
+                var d = [];
                 for (i in response) {
                     if (response[i].license_plate == e){
                         l.push([response[i].latitude,response[i].longitude])
-                        c = response[i].color
+                        c = response[i].color;
+                        d.push(response[i].timestamp);
                     };                
                 }
                 lattlngs[e] = {
                     'Location':l,
-                    'Color':c}
+                    'Color':c,
+                    'Date':d}
 
                 console.log(lattlngs[e])
             });
