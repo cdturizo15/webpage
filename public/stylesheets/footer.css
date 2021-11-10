@@ -125,3 +125,8 @@ footer p {
     padding: 15px 0px;
   }
 }
+@media screen and (max-width: 500px) {
+  .text-muted {
+    display:flex !important;
+  }  
+}
