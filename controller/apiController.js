@@ -3,7 +3,6 @@ const { database } = require('./keys');
 
 const timestamp = async (req, res) => {
     coordinates = req.body
-    console.log(coordinates);
     let lat = coordinates[1]
     let lon = coordinates[0]
     let lati = parseFloat(lat) - 0.0004
@@ -16,12 +15,12 @@ const timestamp = async (req, res) => {
             WHERE latitude BETWEEN '${lati.toFixed(4)}' AND '${latf.toFixed(4)}' 
             AND longitude BETWEEN '${loni.toFixed(4)}' AND '${lonf.toFixed(4)}'
             AND t.license_plate = '${coordinates[2]}'`);
-        console.log(response)
+
         var infoTimeAndPos = [];
         for (i in response) {
             infoTimeAndPos.push([response[i].latitude, response[i].longitude, response[i].timestamp, response[i].license_plate]);
         }
-        console.log(infoTimeAndPos)
+
         res.json(
             infoTimeAndPos)
     } catch (e) {
@@ -39,8 +38,8 @@ const gpsDates = async (req, res) => {
             const response = await pool.query(`SELECT * FROM taxiflow.location as l
             INNER JOIN taxiflow.taxi as t ON l.idtaxi = t.idtaxi
             WHERE timestamp >= "${dates[0]}" AND timestamp <= "${dates[1]}"`);
-            
-            let arrlicense_plate = []; 
+
+            let arrlicense_plate = [];
             for (i in response) {
                 arrlicense_plate.push(response[i].license_plate)
             }
@@ -51,27 +50,28 @@ const gpsDates = async (req, res) => {
                 var c;
                 var d = [];
                 for (i in response) {
-                    if (response[i].license_plate == e){
-                        l.push([response[i].latitude,response[i].longitude])
+                    if (response[i].license_plate == e) {
+                        l.push([response[i].latitude, response[i].longitude])
                         c = response[i].color;
                         d.push(response[i].timestamp);
-                    };                
+                    };
                 }
                 lattlngs[e] = {
-                    'Location':l,
-                    'Color':c,
-                    'Date':d}
-                    
-                console.log(lattlngs[e])
+                    'Location': l,
+                    'Color': c,
+                    'Date': d
+                }
+
+
             });
 
-        }else {
+        } else {
             const response = await pool.query(`SELECT * FROM taxiflow.location as l
                 INNER JOIN taxiflow.taxi as t ON l.idtaxi = t.idtaxi
                 WHERE timestamp >= "${dates[0]}" AND timestamp <= "${dates[1]}"
                 AND t.license_plate = "${dates[2]}"`);
-            
-            let arrlicense_plate = []; 
+
+            let arrlicense_plate = [];
             for (i in response) {
                 arrlicense_plate.push(response[i].license_plate)
             }
@@ -82,31 +82,29 @@ const gpsDates = async (req, res) => {
                 var c;
                 var d = [];
                 for (i in response) {
-                    if (response[i].license_plate == e){
-                        l.push([response[i].latitude,response[i].longitude])
+                    if (response[i].license_plate == e) {
+                        l.push([response[i].latitude, response[i].longitude])
                         c = response[i].color;
                         d.push(response[i].timestamp);
-                    };                
+                    };
                 }
                 lattlngs[e] = {
-                    'Location':l,
-                    'Color':c,
-                    'Date':d}
+                    'Location': l,
+                    'Color': c,
+                    'Date': d
+                }
 
-                console.log(lattlngs[e])
+
             });
 
-    }
+        }
 
         res.json(
             {
                 latlon: lattlngs,
             }
         );
-        //console.log(response)
-        //console.log(lattlngs)
     } catch (e) {
-        //console.error(e);
     }
 };
 

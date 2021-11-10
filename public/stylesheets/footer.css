@@ -1,8 +1,8 @@
 footer {
   position: relative;
   width: auto;
-  height: auto;
-  padding: 30px 150px 30px 190px;
+  height: 30vh;
+  padding: 30px 0px;
   background: #ff5b63;
   display: flex;
   justify-content: space-between;
@@ -19,12 +19,13 @@ footer .container {
   align-content: center;
 }
 footer .container .sec {
-  margin-right: 30px;
-  margin-left: 30px;
-  font-size: 12px;
+  margin-right: 7vh;
+  margin-left: 7vh;
+  font-size: 13px;
 }
 footer .container .sec.aboutus {
-  width: 50%;
+  width: 70vh;
+  height: 25vh;
 }
 footer .container h2 {
   position: relative;
@@ -73,9 +74,10 @@ footer p {
   font-size: 12px;
 }
 .contact {
-  width: calc(50%-30px);
-  margin-right: 0px !important;
-  margin-left: 30px;
+  width: 40vh;
+  height: 25vh;
+  margin-right: 3vh;
+  margin-left: 3vh;
 }
 .contact .info {
   position: relative;
@@ -92,106 +94,34 @@ footer p {
   color: #000000;
   text-align: center;
 }
-
-@media screen and (max-width: 1230px) {
-  footer {
-    padding: 30px 100px 30px 180px;
-  }
-  .container {
-    margin-left: 5px;
-  }
-  footer .container .sec {
-    margin-right: 10px;
-    margin-left: 10px;
-  }
+@media screen and (max-width: 1050px) {
   footer .container .sec.aboutus {
-    margin-right: 7px;
-  }
-}
-@media screen and (max-width: 1100px) {
-  footer {
-    padding: 30px 100px 30px 160px;
+    width: 30vh;
+    margin-right: 2vh;
+    margin-left: 2vh;
   }
   footer .container .sec {
-    margin-right: 0px;
-    margin-left: 5px;
-  }
-}
-@media screen and (max-width: 1001px) {
-  footer {
-    padding: 20px 30px 20px 70px;
-  }
-}
-@media screen and (max-width: 880px) {
-  footer {
-    padding: 20px 10px 20px 10px;
+    margin-right: 2vh;
+    margin-left: 2vh;
+    font-size: 12px;
   }
   .sci {
-    margin-top: 5px;
-  }
-  footer h2 {
-    margin-top: 2px;
-    margin-bottom: 0px;
-  }
-  .aboutus h2 {
-    margin-bottom: 5px;
+    margin-top: 10px;
   }
 }
-@media screen and (max-width: 804px) {
-  footer {
-    padding: 20px 30px 20px 30px;
-  }
-  footer .container .sec.aboutus {
-    width: 55%;
-  }
-  footer .container .sec.contact {
-    width: calc(45%-30px);
-  }
-  .text-muted {
-    display: none !important;
-  }
-  .aboutus {
-    margin-bottom: 20px;
-  }
-}
-
-@media screen and (max-width: 771px) {
-  
+@media screen and (max-width: 610px) {
   footer .container {
     flex-direction: column;
   }
   footer {
-    padding: 20px 20px 20px 20px;
+    padding: 20px 0px;
+    height: auto;
   }
   footer .container .sec.aboutus {
-    width: 35%;
+    width: 40vh;
+    padding: 3px 0;
   }
-  footer .container .sec.contact {
-    width: 40%;
-  }
-}
-@media screen and (max-width: 580px) {
-  footer .container .sec.aboutus {
-    width: 50%;
-  }
-  footer .container .sec.contact {
-    width: 50%;
-  }
-}
-
-@media screen and (max-width: 490px) {
-  footer .container .sec.aboutus {
-    width: 70%;
-  }
-  footer .container .sec.contact {
-    width: 70%;
-  }
-}
-@media screen and (max-width: 355px) {
-  footer .container .sec.aboutus {
-    width: 100%;
-  }
-  footer .container .sec.contact {
-    width: 100%;
+  .contact {
+    padding: 15px 0px;
   }
 }
