@@ -5,8 +5,12 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-p{
+p {
   margin: 10px;
+}
+
+.wrap{
+  flex-wrap:wrap
 }
 .container {
   display: flex;
@@ -24,9 +28,11 @@ p{
   width: 70vh;
 }
 #currentInfo {
+  flex:1 1 20%;
   overflow-y: scroll;
   width: 65vh;
-  height: 82vh;
+  min-height:25vh;
+  margin-bottom: 10px;
 }
 #currentInfo p {
   background-color: #eeeeee;
@@ -36,52 +42,34 @@ p{
   border-radius: 20px;
   padding: 5px;
 }
-#map-template{
+#map-template {
   margin: 0px 10px;
+  min-width:450px;
+  flex-shrink: 3;
+  flex:1 1 78%;
 }
 .row {
   padding: 50px 20px;
 }
 
-
-
-@media (max-width: 768px) and (min-width: 500px) {
-  .img {
-    width: 60vh;
+@media all and (orientation: portrait) {
+  @media (max-width: 768px) and (min-width: 500px) {
+    .img {
+      width: 60vh;
+    }
+  }
+  @media (max-width: 500px) {
+    .img {
+      width: 40vh;
+    }
+  }
+  @media screen and (max-width: 281px) {
+    .img {
+      width: 30vh;
+    }
   }
 }
-@media (max-width: 500px) {
-  .img {
-    width: 40vh;
-  }
-}
-@media screen and (max-width: 281px) {
-  .img {
-    width: 30vh;
-  }
-}
-
-@media screen and (max-height: 650px) {
-  #currentInfo::-webkit-scrollbar {
-    width: 12px;
-  }
+@media all and (orientation: landscape) {
   
-  /* Track */
-  #currentInfo::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-  }
   
-  /* Handle */
-  #currentInfo::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    background: #f1666e; 
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
-  }
-
-  #currentInfo::-webkit-scrollbar-thumb:window-inactive {
-    background: #c75359; 
-  }
 }

@@ -6,7 +6,7 @@ const child_p = require('child_process')
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 require('dotenv').config()
-const port = 8080
+const port = 80
 
 require('./database/accedeDB.js')
 
