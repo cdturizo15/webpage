@@ -1,8 +1,8 @@
 footer {
   position: relative;
   width: auto;
-  height: 30vh;
-  padding: 30px 0px;
+  height: 220px;
+  padding: 20px 0px;
   background: #ff5b63;
   display: flex;
   justify-content: space-between;
@@ -19,13 +19,13 @@ footer .container {
   align-content: center;
 }
 footer .container .sec {
-  margin-right: 7vh;
-  margin-left: 7vh;
+  margin-right: 30px;
+  margin-left: 30px;
   font-size: 13px;
 }
 footer .container .sec.aboutus {
-  width: 70vh;
-  height: 25vh;
+  width: 303px;
+  height: 193px;
 }
 footer .container h2 {
   position: relative;
@@ -74,8 +74,8 @@ footer p {
   font-size: 12px;
 }
 .contact {
-  width: 40vh;
-  height: 25vh;
+  width: 303px;
+  height: 193px;
   margin-right: 3vh;
   margin-left: 3vh;
 }
@@ -94,39 +94,81 @@ footer p {
   color: #000000;
   text-align: center;
 }
-@media screen and (max-width: 1050px) {
-  footer .container .sec.aboutus {
-    width: 30vh;
-    margin-right: 2vh;
-    margin-left: 2vh;
+/*
+Para cuando el height es mayor al width
+*/
+@media all and (orientation: portrait) {
+  @media screen and (max-width: 1050px) {
+    footer .container .sec {
+      font-size: 12px;
+    }
+    .sci {
+      margin-top: 10px;
+    }
   }
-  footer .container .sec {
-    margin-right: 2vh;
-    margin-left: 2vh;
-    font-size: 12px;
+  @media screen and (max-width: 730px) {
+    footer .container .sec {
+      margin-right: 10px;
+      margin-left: 10px;
+    }
   }
-  .sci {
-    margin-top: 10px;
+  @media screen and (max-width: 660px) {
+    footer .container {
+      flex-direction: column;
+    }
+    footer {
+      padding: 20px 0px;
+      height: auto;
+    }
+    footer .container .sec.aboutus {
+      padding: 3px 0;
+    }
+    .contact {
+      padding: 15px 0px;
+    }
+  }
+  @media screen and (max-width: 540px) {
+    .text-muted {
+      display: flex !important;
+    }
   }
 }
-@media screen and (max-width: 610px) {
-  footer .container {
-    flex-direction: column;
+/*
+El width es mayor al height
+*/
+@media all and (orientation: landscape) {
+  @media screen and (max-width: 1050px) {
+    footer .container .sec {
+      font-size: 12px;
+    }
+    .sci {
+      margin-top: 10px;
+    }
   }
-  footer {
-    padding: 20px 0px;
-    height: auto;
+  @media screen and (max-width: 730px) {
+    footer .container .sec {
+      margin-right: 10px;
+      margin-left: 10px;
+    }
   }
-  footer .container .sec.aboutus {
-    width: 40vh;
-    padding: 3px 0;
+  @media screen and (max-width: 660px) {
+    footer .container {
+      flex-direction: column;
+    }
+    footer {
+      padding: 20px 0px;
+      height: auto;
+    }
+    footer .container .sec.aboutus {
+      padding: 3px 0;
+    }
+    .contact {
+      padding: 15px 0px;
+    }
   }
-  .contact {
-    padding: 15px 0px;
+  @media screen and (max-width: 540px) {
+    .text-muted {
+      display: flex !important;
+    }
   }
-}
-@media screen and (max-width: 500px) {
-  .text-muted {
-    display:flex !important;
-  }  
 }
