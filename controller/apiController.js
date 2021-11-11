@@ -49,17 +49,20 @@ const gpsDates = async (req, res) => {
                 var l = [];
                 var c;
                 var d = [];
+                var r = [];
                 for (i in response) {
                     if (response[i].license_plate == e) {
                         l.push([response[i].latitude, response[i].longitude])
                         c = response[i].color;
                         d.push(response[i].timestamp);
+                        r.push(response[i].rpm);
                     };
                 }
                 lattlngs[e] = {
                     'Location': l,
                     'Color': c,
-                    'Date': d
+                    'Date': d,
+                    'RPM': r
                 }
 
 
@@ -81,17 +84,20 @@ const gpsDates = async (req, res) => {
                 var l = [];
                 var c;
                 var d = [];
+                var r = [];
                 for (i in response) {
                     if (response[i].license_plate == e) {
                         l.push([response[i].latitude, response[i].longitude])
                         c = response[i].color;
                         d.push(response[i].timestamp);
+                        r.push(response[i].rpm);
                     };
                 }
                 lattlngs[e] = {
                     'Location': l,
                     'Color': c,
-                    'Date': d
+                    'Date': d,
+                    'RPM': r
                 }
 
 

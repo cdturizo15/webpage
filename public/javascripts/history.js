@@ -186,6 +186,7 @@ async function getHistory() {
                 //console.log(latlngs[e])
                 vectorPoly = latlngs[e]['Location'];
                 vectorDate = latlngs[e]['Date'];
+                vectorRPM = latlngs[e]['RPM'];
             });
 
             document.getElementById("sliderValue").innerHTML = "";
@@ -326,7 +327,7 @@ function funSlider() {
     //console.log(value)
     //console.log(slideValue)
     let tag = document.createElement("p");
-    text = document.createTextNode(vectorDate[value-1] + " - " + vectorPoly[value-1]);
+    text = document.createTextNode(vectorDate[value-1] + " - " + vectorPoly[value-1]+ " - " +vectorRPM[value-1]+ " RPM ");
     tag.appendChild(text);
     var element = document.getElementById("sliderInfo");
     element.appendChild(tag); 
