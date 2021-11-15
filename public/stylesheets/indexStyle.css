@@ -30,8 +30,7 @@ body{
   flex:1 1 20%;
   display: block;
   overflow-y: scroll;
-  min-height:25vh;
-  height: 85vh;
+  height: 22vh;
   margin-bottom: 10px;
 }
 #currentInfo p {
@@ -59,7 +58,7 @@ body{
   width: 90%;
 }
 .row {
-  padding: 50px 20px;
+  padding: 25px 20px;
 }
 
 @media all and (orientation: portrait) {
@@ -67,9 +66,11 @@ body{
     .wrap{
       display: block;
     }
+    #map-template {
+      height: 65vh;
+    }
     #currentInfo {
       display: flex;
-      height: auto;
     }
   }
   @media (max-width: 768px) {
