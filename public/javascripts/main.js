@@ -64,5 +64,37 @@ async function getCurrentInfo() {
   })  
   map.addLayer(markers);
 }
+async function getL() {
+  response = await fetch('http://' + fetchurl + '/live');
+  coordinates = await response.json();
+  currentInfo = coordinates.currentInfo
 
+  currentInfo.forEach(function (info) {
+      licenses[licenses.length] = info.license_plate;
+  });
+
+  document.getElementById("licence-id").innerHTML = "";
+
+  var i = 0;
+  let tag = document.createElement("option");
+  tag.value = i;
+  let text = document.createTextNode("TODO");
+  tag.appendChild(text);
+  var element = document.getElementById("licence-id");
+  element.appendChild(tag);
+
+  licenses.forEach(function (license) {
+      i++
+      tag = document.createElement("option");
+      tag.value = i;
+      text = document.createTextNode(license);
+      tag.appendChild(text);
+
+      element = document.getElementById("licence-id");
+      element.appendChild(tag);
+      getHistory();
+  })
+
+}
+getL();
 setInterval(getCurrentInfo, 2000);
