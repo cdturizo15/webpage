@@ -8,10 +8,6 @@
 body{
   overflow: scroll;
 }
-a {
-  
-}
-
 .wrap{
   flex-wrap:wrap
 }
