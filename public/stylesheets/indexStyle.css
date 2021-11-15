@@ -23,15 +23,22 @@ body{
   align-items: center;
   justify-content: center;
 }
+form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
 .img {
   width: 70vh;
 }
 #currentInfo {
-  flex:1 1 20%;
+  flex:1 1 25%;
   display: block;
   overflow-y: scroll;
-  height: 22vh;
+  height: 82vh;
   margin-bottom: 10px;
+  width: 90%;
 }
 #currentInfo p {
   background-color: #eeeeee;
@@ -71,6 +78,9 @@ body{
     }
     #currentInfo {
       display: flex;
+      height: 25vh;
+      width: 90%;
+      margin: auto;
     }
   }
   @media (max-width: 768px) {
