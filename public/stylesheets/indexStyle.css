@@ -8,9 +8,6 @@
 body{
   overflow: scroll;
 }
-a {
-  
-}
 
 .wrap{
   flex-wrap:wrap
@@ -38,7 +35,7 @@ a {
   height: 82vh;
   margin-bottom: 10px;
 }
-#currentInfo a {
+#currentInfo p {
   background-color: #eeeeee;
   border-width: 5px;
   border-style: hidden;
