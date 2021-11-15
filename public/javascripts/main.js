@@ -5,8 +5,10 @@ L.tileLayer(tileURL).addTo(map)
 let marker = null
 var sw = 0
 var button = document.getElementById('zoom');
+var droplicence = document.getElementById('licence-id');
 var latlngs = [];
 var polyline = null
+var licenses = [];
 
 var markers = L.markerClusterGroup({
 	spiderfyOnMaxZoom: true,
@@ -16,7 +18,18 @@ var markers = L.markerClusterGroup({
 
 
 async function getCurrentInfo() {
-  response = await fetch('http://'+fetchurl+'/live');
+  licence = document.getElementById("licence-id");
+  license = licence.options[licence.selectedIndex].text;
+  const data = [license];
+  const options = {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+}
+
+  const response = await fetch('http://' + fetchurl + '/live', options);
   coordinates = await response.json();
   currentInfo = coordinates.currentInfo
   
@@ -45,10 +58,16 @@ async function getCurrentInfo() {
     //map.addLayer(polyline)
     markers.addLayer(marker);
 
+
+
     let tag = document.createElement("p");
     tag.id = info.license_plate;
     //tag.setAttribute('href', "/historial");
-    let text = document.createTextNode("Placa: " + info.license_plate);
+    text = document.createTextNode(info.name);
+    tag.appendChild(text);
+    let tag1 = document.createElement("br");
+    tag.appendChild(tag1);
+    text = document.createTextNode("Placa: " + info.license_plate);
     tag.appendChild(text);
     let tag2 = document.createElement("br");
     tag.appendChild(tag2);
@@ -64,14 +83,15 @@ async function getCurrentInfo() {
   })  
   map.addLayer(markers);
 }
-async function getL() {
-  response = await fetch('http://' + fetchurl + '/live');
-  coordinates = await response.json();
-  currentInfo = coordinates.currentInfo
 
-  currentInfo.forEach(function (info) {
-      licenses[licenses.length] = info.license_plate;
+async function getL() {
+  response = await fetch('http://' + fetchurl + '/licences');
+  allLi = await response.json();
+  allL = allLi.allL;
+  allL.forEach(function (info) {
+    licenses[licenses.length] = info.license_plate;
   });
+  //console.log(licenses);
 
   document.getElementById("licence-id").innerHTML = "";
 
@@ -84,6 +104,7 @@ async function getL() {
   element.appendChild(tag);
 
   licenses.forEach(function (license) {
+      //console.log(license);
       i++
       tag = document.createElement("option");
       tag.value = i;
@@ -92,9 +113,23 @@ async function getL() {
 
       element = document.getElementById("licence-id");
       element.appendChild(tag);
-      getHistory();
   })
-
 }
+button.addEventListener('click', function () {
+  if(document.getElementById("licence-id").value != 0){
+    map.setView([currentInfo[0].latitude,currentInfo[0].longitude], 14);
+  }else{
+    map.setView([10.9583295,-74.791163502], 12);
+  }
+});
+droplicence.addEventListener("change", function () {
+  if(document.getElementById("licence-id").value != 0){
+    map.setView([currentInfo[0].latitude,currentInfo[0].longitude], 14);
+  }else{
+    map
+    .setView([10.9583295,-74.791163502], 12);
+  }
+  getCurrentInfo();
+});
 getL();
 setInterval(getCurrentInfo, 2000);

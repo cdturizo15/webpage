@@ -203,9 +203,12 @@ async function getHistory() {
 }
 
 async function getL() {
-    response = await fetch('http://' + fetchurl + '/live');
-    coordinates = await response.json();
-    currentInfo = coordinates.currentInfo
+    response = await fetch('http://' + fetchurl + '/licences');
+    allLi = await response.json();
+    allL = allLi.allL;
+    allL.forEach(function (info) {
+        licenses[licenses.length] = info.license_plate;
+    });
 
     var fecha = new Date();
     var month = String(fecha.getUTCMonth()+1);
@@ -226,11 +229,6 @@ async function getL() {
     
     document.getElementById("datetime-1").value = dateNowInit;
     document.getElementById("datetime-2").value = dateNowFinal;
-    
-
-    currentInfo.forEach(function (info) {
-        licenses[licenses.length] = info.license_plate;
-    });
 
     document.getElementById("licence-id").innerHTML = "";
 

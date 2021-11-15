@@ -9,13 +9,15 @@ const {
 const {
     gpsLocation,
     gpsDates,
-    timestamp
+    timestamp,
+    findL
 } = require('../controller/apiController');
 
 /* GET home page. */
 router.get('/', getIndex);
 router.get('/historial', getHistory);
-router.get('/live',  gpsLocation);
+router.post('/live',  gpsLocation);
+router.get('/licences',  findL);
 router.post('/dates', gpsDates);
 router.post('/timestamp', timestamp);
 

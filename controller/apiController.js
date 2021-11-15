@@ -115,7 +115,10 @@ const gpsDates = async (req, res) => {
 };
 
 const gpsLocation = async (req, res) => {
+    const dates = req.body;
+    //console.log(dates[0]);
     try {
+        if (dates[0] == 'TODO') {
         const response = await pool.query(`WITH UNO AS (
             SELECT  l.idtaxi, MAX(l.idlocation) AS maxfecha
             FROM taxiflow.location as l
@@ -133,22 +136,58 @@ const gpsLocation = async (req, res) => {
         lon = location.longitude;
         date = location.date;
         time = location.time;
+        }else{
+            const response = await pool.query(`WITH UNO AS (
+                SELECT  l.idtaxi, MAX(l.idlocation) AS maxfecha
+                FROM taxiflow.location as l
+                GROUP BY idtaxi
+                )
+                SELECT l.*, d.name, t.license_plate
+                FROM taxiflow.location AS l
+                INNER JOIN UNO AS q ON l.idtaxi = q.idtaxi AND l.idlocation = maxfecha
+                LEFT JOIN taxiflow.taxi AS t ON l.idtaxi  = t.idtaxi
+                LEFT JOIN taxiflow.driver AS d ON d.id_driver  = t.id_driver
+                WHERE t.license_plate = "${dates[0]}" `);
 
+            currentInfo = response;
+            vectorP = [];
+            location = response[0]
+            lat = location.latitude;
+            lon = location.longitude;
+            date = location.date;
+            time = location.time;
+        }
+        res.json(
+            {
+                lat: lat,
+                lon: lon,
+                date: date,
+                time: time,
+                currentInfo: currentInfo,
+            }
+        );
+    } catch (e) {
+        console.error(e);
+    }
+};
+
+const findL = async (req, res) => {
+    try {
+        const response = await pool.query(`
+            SELECT t.license_plate
+            FROM taxiflow.taxi AS t`);
+        allL = response;
         res.json({
-            lat: lat,
-            lon: lon,
-            date: date,
-            time: time,
-            currentInfo: currentInfo,
+            allL: allL,
         });
     } catch (e) {
         console.error(e);
     }
 };
 
-
 module.exports = {
     gpsLocation,
     gpsDates,
-    timestamp
+    timestamp,
+    findL
 }
