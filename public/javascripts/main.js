@@ -71,7 +71,7 @@ async function getCurrentInfo() {
     tag.appendChild(text);
     let tag2 = document.createElement("br");
     tag.appendChild(tag2);
-    text = document.createTextNode("Ubicación: " + info.latitude + " , " + info.longitude);
+    text = document.createTextNode("Ubicación: " + info.latitude + ", " + info.longitude);
     tag.appendChild(text);
     let tag3 = document.createElement("br");
     tag.appendChild(tag3);
