@@ -78,7 +78,7 @@ form{
     }
     #currentInfo {
       display: flex;
-      height: 25vh;
+      height: auto;
       width: 90%;
       margin: auto;
     }
