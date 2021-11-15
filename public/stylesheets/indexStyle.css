@@ -9,7 +9,7 @@ body{
   overflow: scroll;
 }
 .wrap{
-  flex-wrap:wrap
+  display: flex;
 }
 .container {
   display: flex;
@@ -28,13 +28,13 @@ body{
 }
 #currentInfo {
   flex:1 1 20%;
+  display: block;
   overflow-y: scroll;
-  width: 65vh;
   min-height:25vh;
-  height: 82vh;
+  height: 85vh;
   margin-bottom: 10px;
 }
-#currentInfo a {
+#currentInfo p {
   background-color: #eeeeee;
   border-width: 5px;
   border-style: hidden;
@@ -52,17 +52,27 @@ body{
   transform: scale(1.01);
 }
 #map-template {
-  margin: 0px 10px;
-  min-width:450px;
+  margin: auto;
   flex-shrink: 3;
-  flex:1 1 78%;
+  /*
+  */
+  width: 90%;
 }
 .row {
   padding: 50px 20px;
 }
 
 @media all and (orientation: portrait) {
-  @media (max-width: 768px) and (min-width: 500px) {
+  @media (max-width: 850px) {
+    .wrap{
+      display: block;
+    }
+    #currentInfo {
+      display: flex;
+      height: auto;
+    }
+  }
+  @media (max-width: 768px) {
     .img {
       width: 60vh;
     }

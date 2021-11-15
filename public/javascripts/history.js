@@ -219,7 +219,6 @@ async function getL() {
     }
     dateNowFinal = year+"-"+month+"-"+day+"T"+"23:59" ;
     
-    month = String(month-2)
     if (month.length == 1){
         month = 0+month
     }
