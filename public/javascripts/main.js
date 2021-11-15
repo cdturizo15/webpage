@@ -45,7 +45,12 @@ async function getCurrentInfo() {
     //map.addLayer(polyline)
     markers.addLayer(marker);
 
-    let tag = document.createElement("p");
+    let tag = document.createElement("a");
+    tag.id = info.license_plate;
+    tag.onclick = function () {
+      console.log("go to /",info.license_plate);
+    };
+    tag.setAttribute('href', "/historial");
     let text = document.createTextNode("Placa: " + info.license_plate);
     tag.appendChild(text);
     let tag2 = document.createElement("br");
@@ -62,4 +67,5 @@ async function getCurrentInfo() {
   })  
   map.addLayer(markers);
 }
+
 setInterval(getCurrentInfo, 2000);

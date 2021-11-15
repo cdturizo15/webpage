@@ -36,6 +36,9 @@ socket.on('message',(message)=>{
     const milliseconds = parseInt(infoMsg[3]);
     const dateObject = new Date(milliseconds);
     const strDate = dateObject.toISOString();
+    var startTime = new Date(strDate);
+    startTime =   new Date( startTime.getTime() + ( startTime.getTimezoneOffset() * 60000 ) );
+
     const date = strDate.substr(0,10);
     const time = strDate.substr(11,8);
     const timestamp = date + ' ' +time;
@@ -43,6 +46,7 @@ socket.on('message',(message)=>{
     const rpm = infoMsg[5];
 
     console.log(strDate);
+    console.log(startTime);
 
     console.log(lat);
     console.log(lon);
