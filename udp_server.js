@@ -38,6 +38,9 @@ socket.on('message',(message)=>{
     const strDate = dateObject.toISOString();
     var startTime = new Date(strDate);
     startTime =   new Date( startTime.getTime() + ( startTime.getTimezoneOffset() * 60000 ) );
+        
+    var date = convertUTCDateToLocalDate(new Date(strDate))
+    console.log(date);
 
     const date = strDate.substr(0,10);
     const time = strDate.substr(11,8);
@@ -87,6 +90,17 @@ socket.on('message',(message)=>{
         };
     });
 });
+
+function convertUTCDateToLocalDate(date) {
+    var newDate = new Date(date.getTime()+date.getTimezoneOffset()*60*1000);
+
+    var offset = date.getTimezoneOffset() / 60;
+    var hours = date.getHours();
+
+    newDate.setHours(hours - offset);
+
+    return newDate;   
+}
 
 socket.bind(process.env.UDPPORT)
 
