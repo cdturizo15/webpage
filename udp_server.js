@@ -103,8 +103,8 @@ function convertUTCDateToLocalDate(date) {
     newDate.setHours(hours);
 
     y=newDate.getFullYear();
-    c=newDate.getDate().padStart(2,'0');
-    mo=newDate.getMonth().padStart(2,'0');
+    c=newDate.getDate();
+    mo=newDate.getMonth()+1;
 
     ho=newDate.getHours().padStart(2,'0');
     min=newDate.getMinutes().padStart(2,'0');    
