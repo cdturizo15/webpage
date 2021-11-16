@@ -40,10 +40,10 @@ socket.on('message',(message)=>{
     startTime =   new Date( startTime.getTime() + ( startTime.getTimezoneOffset()*60000 ) );
 
     var date27 = convertUTCDateToLocalDate(new Date(strDate)) 
-    console.log("Fecha1: "+date27);
-    console.log("Fecha2: "+strDate);
-    console.log("Fecha3: "+startTime);
-    console.log("Fecha4 :"+infoMsg[3])
+    console.log("Fecha cambio: "+date27.parse());
+    console.log("Fecha correcta:"+infoMsg[3])
+    console.log("Fecha final:  "+strDate);
+    
 
     const date = strDate.substr(0,10);
     const time = strDate.substr(11,8);
