@@ -40,7 +40,9 @@ socket.on('message',(message)=>{
     startTime =   new Date( startTime.getTime() + ( startTime.getTimezoneOffset()*60000 ) );
 
     var date27 = convertUTCDateToLocalDate(new Date(strDate)) 
-    console.log("Fecha cambio: "+date27);
+    console.log(date27.timestamp);
+    console.log(date27.date);
+    console.log(date27.time);
        
 
     const date = strDate.substr(0,10);
@@ -99,6 +101,8 @@ function convertUTCDateToLocalDate(date) {
 
     var offset = date.getTimezoneOffset() / 60;
     var hours = date.getHours();
+    var date
+    var time
 
     newDate.setHours(hours);
 
@@ -112,8 +116,17 @@ function convertUTCDateToLocalDate(date) {
     //console.log("FECHA:" +y+"-"+mo+"-"+c+" "+ho+":"+min+":"+seg)
     
     newDate= y+"-"+mo+"-"+c+" "+ho+":"+min+":"+seg;
+    date1 = y+"-"+mo+"-"+c;
+    time1 = ho+":"+min+":"+seg;  
+
+    obejetoDate = {
+        timestamp: newDate,
+        date: date1,
+        time: time1
+    }
+
+    return obejetoDate;
     
-    return newDate;   
 }
 
 socket.bind(process.env.UDPPORT)
