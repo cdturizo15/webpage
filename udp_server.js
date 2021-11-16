@@ -101,8 +101,15 @@ function convertUTCDateToLocalDate(date) {
     var hours = date.getHours();
 
     newDate.setHours(hours);
+    newDate.setHours(hours);
     c=newDate.getDate();
-    console.log(c)
+    mo=newDate.getMonth();
+    d=newDate.getDay();
+    y=newDate.getFullYear();
+    min=newDate.getMinutes()
+    ho=newDate.getHours();
+    seg=newDate.getSeconds();
+    console.log(y+":"+mo+":"+d+" "+ho+":"+min+":"+seg)
     /*
     
     console.log("Fecha cambio mili: "+Date.parse(newDate));
