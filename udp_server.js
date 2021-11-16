@@ -110,7 +110,7 @@ function convertUTCDateToLocalDate(date) {
     ho=newDate.getHours();
     seg=newDate.getSeconds();
     console.log(y+":"+mo+":"+d+" "+ho+":"+min+":"+seg)
-    /*
+    
     
     console.log("Fecha cambio mili: "+Date.parse(newDate));
     const dateObject2 = new Date(Date.parse(newDate));
@@ -120,7 +120,7 @@ function convertUTCDateToLocalDate(date) {
     const time2 = strDate2.substr(11,8);
     console.log("date:  "+date2);
     console.log("time:  "+time2);
-    */
+    
 
     return newDate;   
 }
