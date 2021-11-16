@@ -43,6 +43,9 @@ socket.on('message',(message)=>{
     console.log("Fecha cambio: "+Date.parse(date27));
     console.log("Fecha correcta:"+infoMsg[3])
     console.log("Fecha final:  "+strDate);
+    const dateObject2 = new Date(Date.parse(date27));
+    const strDate2 = dateObject.toISOString();
+    console.log("Fecha final cambiada:  "+strDate2);
     
 
     const date = strDate.substr(0,10);
