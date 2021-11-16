@@ -41,19 +41,7 @@ socket.on('message',(message)=>{
 
     var date27 = convertUTCDateToLocalDate(new Date(strDate)) 
     console.log("Fecha cambio: "+date27);
-    /*
-    console.log("Fecha cambio mili: "+Date.parse(date27));
-    console.log("Fecha correcta:"+infoMsg[3])
-    console.log("Fecha final:  "+strDate);
-    const dateObject2 = new Date(Date.parse(date27));
-    const strDate2 = dateObject2.toISOString();
-    console.log("Fecha final cambiada:  "+strDate2);
-    const date2 = strDate2.substr(0,10);
-    const time2 = strDate2.substr(11,8);
-    console.log("date:  "+date2);
-    console.log("time:  "+time2);
-    */
-    
+       
 
     const date = strDate.substr(0,10);
     const time = strDate.substr(11,8);
@@ -113,6 +101,9 @@ function convertUTCDateToLocalDate(date) {
     var hours = date.getHours();
 
     newDate.setHours(hours);
+    c=newDate.getDate();
+    console.log(c)
+    /*
     
     console.log("Fecha cambio mili: "+Date.parse(newDate));
     const dateObject2 = new Date(Date.parse(newDate));
@@ -122,6 +113,7 @@ function convertUTCDateToLocalDate(date) {
     const time2 = strDate2.substr(11,8);
     console.log("date:  "+date2);
     console.log("time:  "+time2);
+    */
 
     return newDate;   
 }
