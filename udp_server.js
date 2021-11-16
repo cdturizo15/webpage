@@ -40,7 +40,7 @@ socket.on('message',(message)=>{
     startTime =   new Date( startTime.getTime() + ( startTime.getTimezoneOffset() * 60000 ) );
         
     var date27 = convertUTCDateToLocalDate(new Date(strDate))
-    console.log(date27);
+    console.log("Fecha Dierick djdjd"+date27);
 
     const date = strDate.substr(0,10);
     const time = strDate.substr(11,8);
