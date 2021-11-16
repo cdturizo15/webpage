@@ -42,7 +42,8 @@ socket.on('message',(message)=>{
     var date27 = convertUTCDateToLocalDate(new Date(strDate)) 
     console.log("Fecha1: "+date27);
     console.log("Fecha2: "+strDate);
-    console.log("Fecha2: "+startTime);
+    console.log("Fecha3: "+startTime);
+    console.log("Fecha4 :"+infoMsg[3])
 
     const date = strDate.substr(0,10);
     const time = strDate.substr(11,8);
@@ -72,7 +73,9 @@ socket.on('message',(message)=>{
                 const idtaxi = rows.idtaxi;
                 console.log(idtaxi);  
                 
-                connection.query(`INSERT INTO taxiflow.location (idtaxi, latitude, longitude, date, time, timestamp, rpm) VALUES ("${idtaxi}", "${lat}", "${lon}", "${date}", "${time}", "${timestamp}", "${rpm}")`, function(error, results){
+                connection.query(`INSERT INTO taxiflow.location (idtaxi, latitude, longitude, date, time, timestamp, rpm) 
+                    VALUES ("${idtaxi}", "${lat}", "${lon}", "${date}", "${time}", "${timestamp}", "${rpm}")`,
+                     function(error, results){
                     if(error){
                         throw error; 
                     }else{
