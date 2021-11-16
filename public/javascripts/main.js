@@ -9,6 +9,7 @@ var droplicence = document.getElementById('licence-id');
 var latlngs = [];
 var polyline = null
 var licenses = [];
+var polylines = [];
 
 var markers = L.markerClusterGroup({
 	spiderfyOnMaxZoom: true,
@@ -51,13 +52,20 @@ async function getCurrentInfo() {
     .setContent(info.name+". "+"Placa: "+info.license_plate+"</br>"+"Last position: "+info.latitude+", "+info.longitude);
     marker.bindPopup(popup).openPopup();
 
-    if(info.latitude != ""){
+    if(info.latitude != "" && droplicence.value != "0"){
       latlngs.push([info.latitude,info.longitude])
-    }  
-    polyline = L.polyline(latlngs, {color: 'blue',smoothFactor:0.5})
-    //map.addLayer(polyline)
-    markers.addLayer(marker);
+      polyline =  L.polyline(latlngs, {color: 'black',smoothFactor:0.5});
+      //map.addLayer(polyline)
+      //mappolyline.addTo(map);
+      polylines.push(polyline);
+      polyline.addTo(map)
+      //consolevar polylines = L.layerGroup(polylineArray);
 
+      // Add all polylines to the map
+     //polylines.addTo(map);
+    }  
+   
+    markers.addLayer(marker);
 
 
     let tag = document.createElement("p");
@@ -117,19 +125,26 @@ async function getL() {
 }
 button.addEventListener('click', function () {
   if(document.getElementById("licence-id").value != 0){
-    map.setView([currentInfo[0].latitude,currentInfo[0].longitude], 14);
+    map.setView([currentInfo[0].latitude,currentInfo[0].longitude], 15);
   }else{
     map.setView([10.9583295,-74.791163502], 12);
   }
 });
 droplicence.addEventListener("change", function () {
+  latlngs = []; 
+  if (polylines) {
+    polylines.forEach(function (item) {
+        map.removeLayer(item)
+   })};
+  polyline = null
+  polylines = [];
+  getCurrentInfo();
   if(document.getElementById("licence-id").value != 0){
     map.setView([currentInfo[0].latitude,currentInfo[0].longitude], 14);
   }else{
     map
     .setView([10.9583295,-74.791163502], 12);
   }
-  getCurrentInfo();
 });
 getL();
 setInterval(getCurrentInfo, 2000);
