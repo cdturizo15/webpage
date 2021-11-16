@@ -101,25 +101,15 @@ function convertUTCDateToLocalDate(date) {
     var hours = date.getHours();
 
     newDate.setHours(hours);
-    newDate.setHours(hours);
-    c=newDate.getDate();
-    mo=newDate.getMonth();
-    d=newDate.getDay();
-    y=newDate.getFullYear();
-    min=newDate.getMinutes()
-    ho=newDate.getHours();
-    seg=newDate.getSeconds();
-    console.log(y+":"+mo+":"+d+" "+ho+":"+min+":"+seg)
-    
-    
-    console.log("Fecha cambio mili: "+Date.parse(newDate));
-    const dateObject2 = new Date(Date.parse(newDate));
-    const strDate2 = dateObject2.toISOString();
-    console.log("Fecha final cambiada:  "+strDate2);
-    const date2 = strDate2.substr(0,10);
-    const time2 = strDate2.substr(11,8);
-    console.log("date:  "+date2);
-    console.log("time:  "+time2);
+
+    y=newDate.getFullYear().padStart(2,'0');
+    c=newDate.getDate().padStart(2,'0');
+    mo=newDate.getMonth().padStart(2,'0');
+
+    ho=newDate.getHours().padStart(2,'0');
+    min=newDate.getMinutes().padStart(2,'0');    
+    seg=newDate.getSeconds().padStart(2,'0');
+    console.log("FECHA:" +y+":"+mo+":"+c+" "+ho+":"+min+":"+seg)
     
 
     return newDate;   
