@@ -109,9 +109,10 @@ function convertUTCDateToLocalDate(date) {
     ho=newDate.getHours();
     min=newDate.getMinutes();    
     seg=newDate.getSeconds();
-    console.log("FECHA:" +y+":"+mo+":"+c+" "+ho+":"+min+":"+seg)
+    //console.log("FECHA:" +y+"-"+mo+"-"+c+" "+ho+":"+min+":"+seg)
     
-
+    newDate= y+"-"+mo+"-"+c+" "+ho+":"+min+":"+seg;
+    
     return newDate;   
 }
 
