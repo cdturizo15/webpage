@@ -151,7 +151,7 @@ h3 {
     width: 100%;
     padding: 20px 0;
 
-    height: calc(20% - 50px);
+    height: auto;
     overflow-y: auto;
 
     left: 100%;
