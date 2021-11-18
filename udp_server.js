@@ -114,6 +114,7 @@ function convertUTCDateToLocalDate(date) {
     
     newDate= y+"-"+mo+"-"+c+" "+ho+":"+min+":"+seg;
     date1 = y+"-"+mo+"-"+c;
+    console.log('ho',ho,'min',min,'seg',seg);
     if (ho.length == 1){
         ho = '0'+ho;
     }
@@ -123,7 +124,7 @@ function convertUTCDateToLocalDate(date) {
     if (seg.length == 1){
         seg = '0'+seg;
     }
-    
+
     time1 = ho+":"+min+":"+seg;  
 
     obejetoDate = {
