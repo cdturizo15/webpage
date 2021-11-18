@@ -42,7 +42,6 @@ async function getCurrentInfo() {
   var taxiIcon = L.icon({
     iconUrl: '/images/taxiicon.png',
     iconSize:     [20, 17], // size of the icon
-    //iconAnchor:   [18, 15], // point of the icon which will correspond to marker's location
 });
 
   currentInfo.forEach(function (info){  
@@ -55,14 +54,8 @@ async function getCurrentInfo() {
     if(info.latitude != "" && droplicence.value != "0"){
       latlngs.push([info.latitude,info.longitude])
       polyline =  L.polyline(latlngs, {color: 'black',smoothFactor:0.5});
-      //map.addLayer(polyline)
-      //mappolyline.addTo(map);
       polylines.push(polyline);
-      polyline.addTo(map)
-      //consolevar polylines = L.layerGroup(polylineArray);
-
-      // Add all polylines to the map
-     //polylines.addTo(map);
+      polyline.addTo(map);
     }  
    
     markers.addLayer(marker);
@@ -70,7 +63,6 @@ async function getCurrentInfo() {
 
     let tag = document.createElement("p");
     tag.id = info.license_plate;
-    //tag.setAttribute('href', "/historial");
     text = document.createTextNode(info.name);
     tag.appendChild(text);
     let tag1 = document.createElement("br");
@@ -99,8 +91,6 @@ async function getL() {
   allL.forEach(function (info) {
     licenses[licenses.length] = info.license_plate;
   });
-  //console.log(licenses);
-
   document.getElementById("licence-id").innerHTML = "";
 
   var i = 0;
@@ -112,7 +102,6 @@ async function getL() {
   element.appendChild(tag);
 
   licenses.forEach(function (license) {
-      //console.log(license);
       i++
       tag = document.createElement("option");
       tag.value = i;

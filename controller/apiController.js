@@ -5,10 +5,10 @@ const timestamp = async (req, res) => {
     coordinates = req.body
     let lat = coordinates[1]
     let lon = coordinates[0]
-    let lati = parseFloat(lat) - 0.0004
-    let latf = parseFloat(lat) + 0.0004
-    let loni = parseFloat(lon) + 0.0004
-    let lonf = parseFloat(lon) - 0.0004
+    let lati = parseFloat(lat) - 0.0001
+    let latf = parseFloat(lat) + 0.0001
+    let loni = parseFloat(lon) + 0.0001
+    let lonf = parseFloat(lon) - 0.0001
 
     
     try {
@@ -33,8 +33,6 @@ const timestamp = async (req, res) => {
 
 const gpsDates = async (req, res) => {
     const dates = req.body;
-    var start = dates[1];
-    var end = dates[2];
     var lattlngs = {};
     try {
         if (dates[2] == 'TODO') {

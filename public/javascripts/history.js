@@ -7,9 +7,6 @@ let markerf = null
 let markersli = null
 let popupMarker = null
 let polyline = null
-/*
-var button = document.getElementById('button-trace');
-*/
 var button1 = document.getElementById('zoom');
 var droplicence = document.getElementById('licence-id');
 var dateInit = document.getElementById("datetime-1");
@@ -89,19 +86,7 @@ map.on('popupopen', async function () {
 
     infoTimePos = dates;
     document.getElementById("allDataDiv").innerHTML = "";
-     /*
-    infoTimePos.forEach(function (onelatlngs) {
-        let tag = document.createElement("p");
-        let text = document.createTextNode("Fecha y hora: " + onelatlngs[2]);
-        tag.appendChild(text);
-        let tag2 = document.createElement("br");
-        tag.appendChild(tag2);
-        text = document.createTextNode("Latitud: " + onelatlngs[0] + " - Longitud: " + onelatlngs[1]);
-        tag.appendChild(text);
-        var element = document.getElementById("allDataDiv");
-        element.appendChild(tag);
-    })
-    */
+    
 });
 
 
@@ -178,7 +163,6 @@ async function getHistory() {
             if (licenses.length ==1){
                 ifslider = latlngs[licenses]['Location'].length;
             }
-            //console.log(latlngs);
             licenses.forEach(e => {console.log(latlngs[e]['Location'][0])
                 markeri = L.marker(latlngs[e]['Location'][0]).bindPopup('Placa: ' + e +'<br/>' + 'Posición inicial: ' + latlngs[e]['Location'][0])
                 markerf = L.marker(latlngs[e]['Location'][latlngs[e]['Location'].length - 1]).bindPopup('Placa: ' + e +'<br/>' + 'Posición final: ' + latlngs[e]['Location'][latlngs[e]['Location'].length - 1])
@@ -189,7 +173,6 @@ async function getHistory() {
                 map.addLayer(markersi);
                 markersf.addLayer(markerf);
                 map.addLayer(markersf);
-                //console.log(latlngs[e])
                 vectorPoly = latlngs[e]['Location'];
                 vectorDate = latlngs[e]['Date'];
                 vectorRPM = latlngs[e]['RPM'];
@@ -201,7 +184,6 @@ async function getHistory() {
             document.getElementById("sliderinput").type = "hidden";
             document.getElementById("sliderInfo").innerHTML = "";
             if (document.getElementById("licence-id").value != 0){
-                //document.getElementById("sliderintput").remove();
                 getSliders();
             }
         }
@@ -275,24 +257,6 @@ function getSliders() {
     sliderInput = document.getElementById("sliderinput");
     sliderInput.max = ifslider;
     sliderInput.type = "range";
-    /*
-
-    if (document.getElementById("sliderinput") == null) {
-        tag = document.createElement("input");
-        tag.type = "range";
-        tag.min = 1;
-        tag.max = ifslider;
-        tag.id = "sliderinput";
-        tag.setAttribute("value", "1");
-        tag.setAttribute("steps", "1");
-        element = document.getElementById("field slider");
-        element.insertBefore(tag, element.childNodes[2]);
-    }else{
-        sliderInput = document.getElementById("sliderinput");
-        sliderInput.max = ifslider;
-    }
-    */
-   
         
     document.getElementsByTagName("head")[0].insertAdjacentHTML(
         "beforeend",
@@ -301,11 +265,7 @@ function getSliders() {
     console.log(ifslider);
 }
 
-/*
-button.addEventListener('click', function () {
-    getHistory();
-});
-*/
+
 button1.addEventListener('click', function () {
     map.setView([10.9583295,-74.791163502], 12);
 });
@@ -327,8 +287,6 @@ function funSlider() {
     slideValue.textContent = value;
     slideValue.style.left = (value/ifslider*100) + "%";
     slideValue.classList.add("show");
-    //console.log(value)
-    //console.log(slideValue)
     let tag = document.createElement("p");
     text = document.createTextNode(vectorDate[value-1] + " - " + vectorPoly[value-1]+ " - " +vectorRPM[value-1]+ " RPM ");
     tag.appendChild(text);
@@ -337,17 +295,9 @@ function funSlider() {
 
     var taxiIcon = L.icon({
         iconUrl: '/images/taxiicon.png',
-        //shadowUrl: 'leaf-shadow.png',
-    
         iconSize:     [20, 17], // size of the icon
-        //shadowSize:   [50, 64], // size of the shadow
         iconAnchor:   [18, 15], // point of the icon which will correspond to marker's location
-        //shadowAnchor: [4, 62],  // the same for the shadow
-        //popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
     });
-    /*
-    L.marker([vectorPoly[value-1]], {icon: taxiIcon}).addTo(map);
-    */
 
     markersli = L.marker(vectorPoly[value-1], {icon: taxiIcon, draggable: 'false'}, )
     map.addLayer(markersli);

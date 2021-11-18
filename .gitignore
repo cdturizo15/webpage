@@ -2,3 +2,4 @@
 node_modules
 controller/keys.txt
 keys.txt
+.env
