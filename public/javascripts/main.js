@@ -50,7 +50,6 @@ async function getCurrentInfo() {
     var popup = L.popup()
     .setContent(info.name+". "+"Placa: "+info.license_plate+"</br>"+"Last position: "+info.latitude+", "+info.longitude);
     marker.bindPopup(popup).openPopup();
-
     if(info.latitude != "" && droplicence.value != "0"){
       latlngs.push([info.latitude,info.longitude])
       polyline =  L.polyline(latlngs, {color: 'black',smoothFactor:0.5});
@@ -112,6 +111,7 @@ async function getL() {
       element.appendChild(tag);
   })
 }
+
 button.addEventListener('click', function () {
   if(document.getElementById("licence-id").value != 0){
     map.setView([currentInfo[0].latitude,currentInfo[0].longitude], 15);
@@ -120,20 +120,22 @@ button.addEventListener('click', function () {
   }
 });
 droplicence.addEventListener("change", function () {
+
   latlngs = []; 
   if (polylines) {
     polylines.forEach(function (item) {
-        map.removeLayer(item)
+        map.removeLayer(item);
    })};
   polyline = null
   polylines = [];
   getCurrentInfo();
   if(document.getElementById("licence-id").value != 0){
-    map.setView([currentInfo[0].latitude,currentInfo[0].longitude], 14);
+    map.setView([currentInfo[0].latitude,currentInfo[0].longitude], 15);
   }else{
     map
     .setView([10.9583295,-74.791163502], 12);
   }
 });
+
 getL();
-setInterval(getCurrentInfo, 2000);
+setInterval(getCurrentInfo, 4000);

@@ -43,6 +43,9 @@ socket.on('message',(message)=>{
 
     const date = strDate.substr(0,10);
     const time = strDate.substr(11,8);
+    if (time.length == 1) {
+        time= "0"+time
+    }
     const timestamp = date + ' ' +time;
     const license_plate = infoMsg[4];
     const rpm = infoMsg[5];
