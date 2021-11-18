@@ -55,6 +55,7 @@ socket.on('message',(message)=>{
     console.log(lon);
     console.log(date27.date);
     console.log(date27.time);
+    console.log(date27.timestamp);
     console.log(timestamp);
     console.log(license_plate);
     console.log(rpm);
@@ -112,7 +113,6 @@ function convertUTCDateToLocalDate(date) {
     seg=newDate.getSeconds();
     //console.log("FECHA:" +y+"-"+mo+"-"+c+" "+ho+":"+min+":"+seg)
     
-    newDate= y+"-"+mo+"-"+c+" "+ho+":"+min+":"+seg;
     date1 = y+"-"+mo+"-"+c;
     
     if (String(ho).length == 1){
@@ -127,9 +127,8 @@ function convertUTCDateToLocalDate(date) {
         console.log('seg',seg);
         seg = '0'+seg;
     }
-
-
-
+    newDate= y+"-"+mo+"-"+c+" "+ho+":"+min+":"+seg;
+    
     time1 = ho+":"+min+":"+seg;  
 
     obejetoDate = {
