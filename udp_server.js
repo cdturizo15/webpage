@@ -72,7 +72,7 @@ socket.on('message',(message)=>{
                 console.log(idtaxi);  
                 
                 connection.query(`INSERT INTO taxiflow.location (idtaxi, latitude, longitude, date, time, timestamp, rpm) 
-                    VALUES ("${idtaxi}", "${lat}", "${lon}", "${date27.date}", "${date27.time}", "${timestamp}", "${rpm}")`,
+                    VALUES ("${idtaxi}", "${lat}", "${lon}", "${date27.date}", "${date27.time}", "${date27.timestamp}", "${rpm}")`,
                      function(error, results){
                     if(error){
                         throw error; 
