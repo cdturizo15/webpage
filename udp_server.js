@@ -116,7 +116,7 @@ function convertUTCDateToLocalDate(date) {
     date1 = y+"-"+mo+"-"+c;
     console.log('ho',ho,'min',min,'seg',seg);
     console.log(ho);
-    console.log(parseIntnt(ho).length == 1);
+    console.log(parseInt(ho).length == 1);
     console.log(ho.length === 1);
     console.log(ho.length === '1');
     if (String(ho).length == 1){
