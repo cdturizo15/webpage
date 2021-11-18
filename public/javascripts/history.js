@@ -66,8 +66,14 @@ map.on('popupopen', async function () {
     licence = document.getElementById("licence-id");
     license = licence.options[licence.selectedIndex].text;
 
+    dateInit_1 = document.getElementById("datetime-1");
+    dateFinal_1 = document.getElementById("datetime-2");
+
+    dateInit = correctFormatWithoutT(dateInit_1.value)
+    dateFinal = correctFormatWithoutT(dateFinal_1.value)
+
     var popup = polyline.getPopup();
-    coordinates = [popup.getLatLng().lng.toFixed(4), popup.getLatLng().lat.toFixed(4),license]
+    coordinates = [popup.getLatLng().lng.toFixed(4), popup.getLatLng().lat.toFixed(4),license, dateInit, dateFinal]
     
     const options = {
         method: 'POST',

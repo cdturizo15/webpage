@@ -9,12 +9,15 @@ const timestamp = async (req, res) => {
     let latf = parseFloat(lat) + 0.0004
     let loni = parseFloat(lon) + 0.0004
     let lonf = parseFloat(lon) - 0.0004
+
+    
     try {
         const response = await pool.query(`SELECT l.*, t.* FROM taxiflow.location as l
             INNER JOIN taxiflow.taxi as t ON l.idtaxi = t.idtaxi
             WHERE latitude BETWEEN '${lati.toFixed(4)}' AND '${latf.toFixed(4)}' 
             AND longitude BETWEEN '${loni.toFixed(4)}' AND '${lonf.toFixed(4)}'
-            AND t.license_plate = '${coordinates[2]}'`);
+            AND t.license_plate = '${coordinates[2]}'
+            AND timestamp >= "${coordinates[3]}" AND timestamp <= "${coordinates[4]}"`);
 
         var infoTimeAndPos = [];
         for (i in response) {
