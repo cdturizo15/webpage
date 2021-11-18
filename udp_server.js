@@ -44,7 +44,7 @@ socket.on('message',(message)=>{
     const date = strDate.substr(0,10);
     const time = strDate.substr(11,8);
 
-    const timestamp = date + ' ' +time;
+    const timestamp =date27.date+' '+date27.time;
     const license_plate = infoMsg[4];
     const rpm = infoMsg[5];
 
@@ -55,7 +55,7 @@ socket.on('message',(message)=>{
     console.log(lon);
     console.log(date27.date);
     console.log(date27.time);
-    console.log(date27.timestamp);
+    console.log(timestamp);
     console.log(license_plate);
     console.log(rpm);
 
@@ -71,7 +71,7 @@ socket.on('message',(message)=>{
                 console.log(idtaxi);  
                 
                 connection.query(`INSERT INTO taxiflow.location (idtaxi, latitude, longitude, date, time, timestamp, rpm) 
-                    VALUES ("${idtaxi}", "${lat}", "${lon}", "${date27.date}", "${date27.time}", "${date27.timestamp}", "${rpm}")`,
+                    VALUES ("${idtaxi}", "${lat}", "${lon}", "${date27.date}", "${date27.time}", "${timestamp}", "${rpm}")`,
                      function(error, results){
                     if(error){
                         throw error; 
