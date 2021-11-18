@@ -1,7 +1,7 @@
 function mostrar_fecha(){
     var fecha = new Date();
-    var month = fecha.getUTCMonth()+1;
-    var day = fecha.getUTCDate();
+    var month = fecha.getMonth()+1;
+    var day = fecha.getDate();
     var year = fecha.getFullYear();
     dateNowInit = year+"-"+month+"-"+day+"T"+"00:00" ;
     dateNowFinal = year+"-"+month+"-"+day+"T"+"23:59" ;

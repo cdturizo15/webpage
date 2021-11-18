@@ -217,8 +217,8 @@ async function getL() {
     });
 
     var fecha = new Date();
-    var month = String(fecha.getUTCMonth()+1);
-    var day = String(fecha.getUTCDate());
+    var month = String(fecha.getMonth()+1);
+    var day = String(fecha.getDate());
     var year = fecha.getFullYear();
     if (day.length == 1){
         day = 0+day
