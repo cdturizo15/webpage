@@ -43,9 +43,7 @@ socket.on('message',(message)=>{
 
     const date = strDate.substr(0,10);
     const time = strDate.substr(11,8);
-    if (time.length == 1) {
-        time= "0"+time
-    }
+
     const timestamp = date + ' ' +time;
     const license_plate = infoMsg[4];
     const rpm = infoMsg[5];
@@ -116,6 +114,16 @@ function convertUTCDateToLocalDate(date) {
     
     newDate= y+"-"+mo+"-"+c+" "+ho+":"+min+":"+seg;
     date1 = y+"-"+mo+"-"+c;
+    if (ho.length == 1){
+        ho = '0'+ho;
+    }
+    if (min.length == 1){
+        min = '0'+min;
+    }
+    if (seg.length == 1){
+        seg = '0'+seg;
+    }
+    
     time1 = ho+":"+min+":"+seg;  
 
     obejetoDate = {
